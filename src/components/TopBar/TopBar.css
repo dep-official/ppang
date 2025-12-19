@@ -65,13 +65,15 @@
 }
 
 .menu-open-icon {
-  transition: transform 0.4s ease, opacity 0.3s ease;
+  transition: transform 0.4s ease, opacity 0.3s ease, visibility 0.3s ease;
   transform-origin: center;
 }
 
 .top-bar-menu-btn.open .menu-open-icon {
   transform: rotate(-45deg) translateX(-100%);
   opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .menu-close-icon {

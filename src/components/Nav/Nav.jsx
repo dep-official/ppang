@@ -272,6 +272,14 @@ const Nav = () => {
                     <h2>진료안내</h2>
                   </a>
                 </li>
+                <li className="link">
+                  <a
+                    href="#"
+                    onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/events"); }}
+                  >
+                    <h2>이벤트</h2>
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="col col-2">
@@ -370,9 +378,6 @@ const Nav = () => {
               <div className="menu-section-content">
                 <a href="/contact" onClick={(e) => handleLinkClick(e, "/contact")} className="menu-story-link">
                   오시는길
-                </a>
-                <a href="/about" onClick={(e) => handleLinkClick(e, "/about")} className="menu-story-link">
-                  약력
                 </a>
                 <a href="/interior" onClick={(e) => handleLinkClick(e, "/interior")} className="menu-story-link">
                   병원인테리어
