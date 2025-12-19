@@ -3,16 +3,32 @@
   width: 100vw;
   height: 135svh;
   overflow: hidden;
-  background-color: #d3cec5;
+  background-color: #fff;
 }
 
 .hero .hero-bg {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   height: 100%;
   pointer-events: none;
+  overflow: hidden;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero .hero-bg iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 56.25vw; /* 16:9 aspect ratio */
+  min-height: 100%;
+  min-width: 177.78vh; /* 16:9 aspect ratio */
+  object-fit: cover;
 }
 
 .hero .hero-gradient {
@@ -31,11 +47,11 @@
 }
 
 .hero .hero-content {
-  position: absolute;
+  position: absolute; 
   top: 50svh;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--base-100);
+  color: #000;
   text-align: center;
   width: 75%;
   display: flex;
@@ -262,8 +278,6 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: var(--base-500);
-  color: var(--base-200);
 }
 
 .gallery-callout .container {
@@ -283,7 +297,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  color: #fff;
+  color: #000;
 }
 
 .gallery-callout .gallery-callout-col:nth-child(1) {
@@ -347,10 +361,12 @@
 .events-container .events-title {
   margin-bottom: 32px;
   margin-top: 18px;
+  color: #000;
 }
 
 .line h3 {
   display: inline-block;
+  color: #000;
   margin-bottom: 8px;
 }
 

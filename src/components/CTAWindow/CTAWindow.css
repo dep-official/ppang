@@ -39,7 +39,7 @@
   transform: translate(-50%, -50%);
   width: 100%;
   text-align: center;
-  color: var(--base-100);
+  color: #fff;
   padding: 1rem;
 }
 
@@ -60,6 +60,10 @@
 
 .cta-window .cta-window-footer .cta-window-callout {
   width: 20%;
+}
+
+.cta-window .cta-window-footer .cta-window-callout h3 {
+  color: #fff;
 }
 
 .cta-window .cta-window-footer .cta-window-description {

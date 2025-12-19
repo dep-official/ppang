@@ -21,7 +21,7 @@
 .loader .block {
   width: 100%;
   height: 100%;
-  background: var(--base-500);
+  background: #fff;
 }
 
 .loader .intro-logo {
@@ -35,21 +35,21 @@
 
 .loader #word-1 {
   position: relative;
-  left: 0rem;
+  left: -0.5rem;
   padding-right: 0.25rem;
-  color: var(--base-100);
+  color: #000;
 }
 
 .loader #word-2 {
   position: relative;
   left: 0.5rem;
   padding-right: 0.25rem;
-  color: var(--base-100);
+  color: #000;
 }
 
 .loader .word h1 {
   font-size: 2rem;
-  color: var(--base-300);
+  color: #000;
   letter-spacing: -0.05rem;
 }
 
@@ -61,7 +61,7 @@
   transform-origin: center top;
   width: 1px;
   height: 100%;
-  background-color: rgba(242, 237, 230, 0.125);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .loader .spinner-container {

@@ -75,15 +75,6 @@ const Footer = () => {
                 >
                   <h3>병원소개</h3>
                 </a>
-                {/* <a
-                  href="/about"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateWithTransition("/about");
-                  }}
-                >
-                  <h3>시술안내</h3>
-                </a> */}
                 <a
                   href=""
                   onClick={(e) => {
@@ -139,7 +130,7 @@ const Footer = () => {
       <div className="footer-outro">
         <div className="container">
           <div className="footer-header">
-            <img src="/logos/ppang-footer-logo.svg" alt="" />
+            <img src="/logos/footer-logo.svg" alt="푸터 로고" />
           </div>
           <div className="footer-copyright">
             <p>

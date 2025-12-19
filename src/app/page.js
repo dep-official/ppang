@@ -18,7 +18,6 @@ import "swiper/css/pagination";
 import Nav from "@/components/Nav/Nav";
 import ConditionalFooter from "@/components/ConditionalFooter/ConditionalFooter";
 import AnimatedButton from "@/components/AnimatedButton/AnimatedButton";
-import FeaturedProjects from "@/components/FeaturedProjects/FeaturedProjects";
 import ClientReviews from "@/components/ClientReviews/ClientReviews";
 import CTAWindow from "@/components/CTAWindow/CTAWindow";
 import Copy from "@/components/Copy/Copy";
@@ -189,203 +188,25 @@ export default function Home() {
           <div className="spinner-container">
             <div className="spinner"></div>
           </div>
-          <div className="counter">
-            <div className="count">
-              <div className="digit">
-                <h1>0</h1>
-              </div>
-              <div className="digit">
-                <h1>0</h1>
-              </div>
-            </div>
-            <div className="count">
-              <div className="digit">
-                <h1>2</h1>
-              </div>
-              <div className="digit">
-                <h1>7</h1>
-              </div>
-            </div>
-            <div className="count">
-              <div className="digit">
-                <h1>6</h1>
-              </div>
-              <div className="digit">
-                <h1>5</h1>
-              </div>
-            </div>
-            <div className="count">
-              <div className="digit">
-                <h1>9</h1>
-              </div>
-              <div className="digit">
-                <h1>8</h1>
-              </div>
-            </div>
-            <div className="count">
-              <div className="digit">
-                <h1>9</h1>
-              </div>
-              <div className="digit">
-                <h1>9</h1>
-              </div>
-            </div>
-          </div>
         </div>
       )}
       <Nav />
       <section className="hero">
-        <div className="hero-bg bg-black">
-          <video autoPlay muted loop playsInline className="w-full h-full">
-            <source src="/home/video_main.mp4" type="video/mp4" />
-          </video>
-          {/* <img src="/home/hero.jpg" alt="" /> */}
+        <div className="hero-bg">
+          <iframe
+            src="https://www.youtube.com/embed/rlb8gJGG9TA?autoplay=1&mute=1&loop=1&playlist=rlb8gJGG9TA&controls=0&modestbranding=1&rel=0&showinfo=0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            style={{ border: 'none' }}
+          />
         </div>
         <div className="hero-gradient"></div>
-        <div className="container">
-          <div className="hero-content">
-            <div className="hero-header">
-              <Copy animateOnScroll={false} delay={showPreloader ? 10 : 0.85}>
-                <h1 className="leading-[1.3] text-[28px] font-bold">뷰티 실험실의 정교함<br/> 반평생 경험으로 완성하다.</h1>
-              </Copy>
-            </div>
-            <div className="hero-tagline">
-              <Copy animateOnScroll={false} delay={showPreloader ? 10.15 : 1}>
-                <p>
-                과학이 아름다움을 만든다. <br/>
-                체형 쁘띠를 연구하는 연구실
-                </p>
-              </Copy>
-            </div>
-            <AnimatedButton
-              label="둘러보기"
-              route="/"
-              animateOnScroll={false}
-              delay={showPreloader ? 10.3 : 1.15}
-            />
-          </div>
-        </div>
-        <div className="hero-stats">
-          <div className="container">
-            <div className="stat">
-              <div className="stat-count">
-                <Copy delay={0.1}>
-                  <h2>2255+</h2>
-                </Copy>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-info">
-                <Copy delay={0.15}>
-                  <p>다이어트 성공 고객수</p>
-                </Copy>
-              </div>
-            </div>
-            <div className="stat">
-              <div className="stat-count">
-                <Copy delay={0.2}>
-                  <h2>27</h2>
-                </Copy>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-info">
-                <Copy delay={0.25}>
-                  <p>임상 연구기간(년)</p>
-                </Copy>
-              </div>
-            </div>
-            <div className="stat">
-              <div className="stat-count">
-                <Copy delay={0.3}>
-                  <h2>2</h2>
-                </Copy>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-info">
-                <Copy delay={0.35}>
-                  <p>평균 성공기간(개월)</p>
-                </Copy>
-              </div>
-            </div>
-            <div className="stat">
-              <div className="stat-count">
-                <Copy delay={0.4}>
-                  <h2>150</h2>
-                </Copy>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-info">
-                <Copy delay={0.45}>
-                  <p>비만데이터 분석 건수(만건)</p>
-                </Copy>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
       
-      <section className="what-we-do">
-        <div className="container">
-          <div className="what-we-do-header">
-            <Copy delay={0.1}>
-              <h1>
-                <span className="spacer">&nbsp;</span>
-                {/* At Terrene, we design with purpose and clarity, creating spaces
-                that speak through light, scale, and the quiet confidence of
-                lasting form. */}
-                K-Custom Fat Solution, supported by years of clinical research
-                An unlimited-volume fat reduction solution
-              </h1>
-            </Copy>
-          </div>
-          {/* <div className="what-we-do-content">
-            <div className="what-we-do-col">
-              <Copy delay={0.1}>
-                <p>
-                  <span className="text-[18px] font-bold">
-                    Fat Engineering Program
-                  </span>
-                </p>
-              </Copy>
 
-              <Copy delay={0.15}>
-                <p>
-                  <span className="text-[32px] font-bold">
-                    체지방을 과학으로 설계하다
-                  </span>
-                </p>
-              </Copy>
-            </div>
-            <div className="what-we-do-col">
-              <div className="what-we-do-tags" ref={tagsRef}>
-                <div className="what-we-do-tag">
-                  <h3>승모근</h3>
-                </div>
-                <div className="what-we-do-tag">
-                  <h3>팔뚝</h3>
-                </div>
-                <div className="what-we-do-tag">
-                  <h3>복부</h3>
-                </div>
-                <div className="what-we-do-tag">
-                  <h3>러브핸들</h3>
-                </div>
-                <div className="what-we-do-tag">
-                  <h3>옆구리</h3>
-                </div>
-                <div className="what-we-do-tag">
-                  <h3>허벅지</h3>
-                </div>
-                <div className="what-we-do-tag">
-                  <h3>종아리</h3>
-                </div>
-              </div>
-            </div>
-          </div> */}
-        </div>
-      </section>
       <section className="events-container">
         <div className="container text-center">
-          <div className="featured-projects-header-callout text-white mb-[32px]">
+          <div className="featured-projects-header-callout mb-[32px]">
             <Copy delay={0.1}>
               <p>Open Your Beauty, PPang Clinic</p>
             </Copy>
@@ -456,21 +277,7 @@ export default function Home() {
           </Swiper>
         </div>
       </section>
-      <section className="featured-projects-container">
-        <div className="container">
-          <div className="featured-projects-header-callout">
-            <Copy delay={0.1}>
-              <p>Open Your Beauty, PPang Clinic</p>
-            </Copy>
-          </div>
-          <div className="featured-projects-header">
-            <Copy delay={0.15}>
-              <h2>설레는 겨울, 팡클리닉 뷰티 연구소의 선물 상자가 도착했습니다.</h2>
-            </Copy>
-          </div>
-        </div>
-        <FeaturedProjects />
-      </section>
+
       <section className="client-reviews-container">
         <div className="container">
           {/* <div className="client-reviews-header-callout">
@@ -488,10 +295,6 @@ export default function Home() {
               </div>
               <div className="gallery-callout-img gallery-callout-img-2">
                 <img src="/gallery-callout/gallery-callout-2.jpg" alt="" />
-                {/* <div className="gallery-callout-img-content">
-                  <h3>5+</h3>
-                  <p>VIP ROOM</p>
-                </div> */}
               </div>
             </div>
             <div className="gallery-callout-row">

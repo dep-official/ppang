@@ -82,6 +82,7 @@
   border: 1px solid var(--base-400);
   border-radius: 10rem;
   font-size: 1.25rem;
+  color: var(--base-400);
 }
 
 .footer .footer-socials p {
@@ -111,7 +112,7 @@
 }
 
 .footer-copyright p span {
-  color: var(--base-100);
+  color: #000;
 }
 
 .footer-copyright p:nth-child(2) {

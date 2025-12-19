@@ -27,7 +27,7 @@
 
 .contact-hero .contact-hero-header h1 {
   width: 100%;
-  color: white;
+  color: #000;
   font-size: 3.2rem;
   line-height: 1.3;
 }
@@ -35,7 +35,7 @@
 .contact-hero .contact-copy-year h1 {
   font-size: 20vw;
   font-weight: 450;
-  color: var(--base-100);
+  color: #000;
 }
 
 .contact-hero .contact-info {
@@ -46,12 +46,12 @@
 }
 
 .contact-hero .contact-info .contact-info-block p {
-  color: var(--base-100);
+  color: #999;
   margin-bottom: 0.5rem;
 }
 
 .contact-hero .contact-info .contact-info-block p:nth-child(1) {
-  color: var(--base-300);
+  color: #000;
 }
 
 .contact-hero .contact-img {
