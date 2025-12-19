@@ -5,6 +5,11 @@ import TopBar from "@/components/TopBar/TopBar";
 export const metadata = {
   title: "팡클리닉",
   description: "팡클리닉",
+  icons: {
+    icon: '/site_logo.png',
+    shortcut: '/site_logo.png',
+    apple: '/site_logo.png',
+  },
 };
 
 export default function RootLayout({ children }) {

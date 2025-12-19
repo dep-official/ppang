@@ -1,19 +1,20 @@
 "use client";
 import "./TopBar.css";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { useViewTransition } from "@/hooks/useViewTransition";
-import AnimatedButton from "../AnimatedButton/AnimatedButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TopBar = () => {
+const TopBar = ({ onMenuClick, isMenuOpen }) => {
   const topBarRef = useRef(null);
   const { navigateWithTransition } = useViewTransition();
+  const [language, setLanguage] = useState("KR");
   let lastScrollY = 0;
   let isScrolling = false;
 
@@ -79,8 +80,40 @@ const TopBar = () => {
           <img src="/logos/logo.svg" alt="팡클리닉" />
         </a>
       </div>
-      <div className="top-bar-cta">
-        <AnimatedButton label="Reserve" route="https://pf.kakao.com/_tZgpn" animate={false} />
+      <div className="top-bar-right">
+        <div className="top-bar-language">
+          <Image 
+            src="/topbar/ico-language.svg" 
+            alt="언어 선택"
+            width={24}
+            height={24}
+          />
+          <span className="language-text">{language}</span>
+        </div>
+        {isMenuOpen ? (
+          <button 
+            className="top-bar-menu-btn open"
+            onClick={onMenuClick}
+            aria-label="메뉴 닫기"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6L18 18" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        ) : (
+          <button 
+            className="top-bar-menu-btn"
+            onClick={onMenuClick}
+            aria-label="메뉴 열기"
+          >
+            <Image 
+              src="/topbar/ico-menu.svg" 
+              alt="메뉴"
+              width={24}
+              height={24}
+            />
+          </button>
+        )}
       </div>
     </div>
   );

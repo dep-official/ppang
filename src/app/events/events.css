@@ -1,0 +1,167 @@
+.events-page {
+  min-height: 100vh;
+  background: #FFFFFF;
+  padding-top: 80px;
+}
+
+.events-page-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.events-page-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  text-align: center;
+  margin: 0 0 24px 0;
+}
+
+.events-page-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 28px;
+}
+
+.events-tab {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #B1B1B1;
+  transition: color 0.3s ease;
+}
+
+.events-tab.active {
+  background: #000000;
+  color: #FFFFFF;
+  border-radius: 4px;
+}
+
+.events-page-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.events-page-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.events-page-card-image {
+  width: 100%;
+}
+
+.events-page-card-figure {
+  position: relative;
+  aspect-ratio: 360 / 225;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #F2F2F2;
+}
+
+.events-page-card-figure::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 61%, rgba(255, 255, 255, 1) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.events-tab.first {
+    color: #1361E1;
+}
+
+.events-tab.first.active {
+    color: #fff;
+}
+
+.events-page-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.events-page-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 6px;
+  height: 26px;
+  background: #000000;
+  z-index: 3;
+}
+
+.events-page-badge span {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.events-page-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 4px;
+}
+
+.events-page-card-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #222222;
+  margin: 0;
+}
+
+.events-page-card-title.ended {
+  font-weight: 700;
+  opacity: 0.6;
+}
+
+.events-page-card-date {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6em;
+  letter-spacing: -0.04em;
+  color: rgba(119, 119, 119, 0.6);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .events-page-container {
+    padding: 0 24px;
+  }
+
+  .events-page-title {
+    font-size: 36px;
+  }
+}
+

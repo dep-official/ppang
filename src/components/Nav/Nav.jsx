@@ -16,6 +16,7 @@ import SplitText from "gsap/SplitText";
 import { useLenis } from "lenis/react";
 
 import MenuBtn from "../MenuBtn/MenuBtn";
+import TopBar from "../TopBar/TopBar";
 import { useViewTransition } from "@/hooks/useViewTransition";
 
 gsap.registerPlugin(SplitText);
@@ -223,78 +224,191 @@ const Nav = () => {
       );
   };
 
+  const [expandedProgram, setExpandedProgram] = useState(null);
+
+  const toggleProgram = (program) => {
+    setExpandedProgram(expandedProgram === program ? null : program);
+  };
+
   return (
     <div>
-      <MenuBtn isOpen={isOpen} toggleMenu={toggleMenu} />
+      <TopBar onMenuClick={toggleMenu} isMenuOpen={isOpen} />
+      {!isOpen && <MenuBtn isOpen={isOpen} toggleMenu={toggleMenu} />}
       <div className="menu" ref={menuRef}>
         <div className="menu-wrapper">
-          <div className="col col-1">
-            <ul className="links">
-              <li className="link">
-                <a
-                  href="/"
-                  onClick={(e) => handleLinkClick(e, "/")}
-                >
-                  <h2>병원소개</h2>
-                </a>
-              </li>
-              {/* <li className="link">
-                <a
-                  href=""
-                  onClick={(e) => handleLinkClick(e, "")}
-                >
-                  <h2>시술안내</h2>
-                </a>
-              </li> */}
-              <li className="link">
-                <a
-                  href="/sample-space"
-                  onClick={(e) => handleLinkClick(e, "https://pf.kakao.com/_tZgpn")}
-                >
-                  <h2>예약안내</h2>
-                </a>
-              </li>
-              <li className="link">
-                <a
-                  href="/interior"
-                  onClick={(e) => handleLinkClick(e, "/interior")}
-                >
-                  <h2>시설안내</h2>
-                </a>
-              </li>
-              <li className="link">
-                <a
-                  href="/contact"
-                  onClick={(e) => handleLinkClick(e, "/contact")}
-                >
-                  <h2>오시는길</h2>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="col col-2">
-            <div className="socials">
-              <div className="sub-col">
-                <div className="menu-meta menu-commissions">
-                  <p>오시는길</p>
-                  <p>서울특별시 마포구 양화로 140, 에이치큐브 9층<br/> 
-                  (홍대입구역 9번 출구 앞, 애플스토어 건물)</p>
+          {/* Desktop Menu */}
+          <div className="menu-desktop">
+            <div className="col col-1">
+              <ul className="links">
+                <li className="link">
+                  <a
+                    href="/"
+                    onClick={(e) => handleLinkClick(e, "/")}
+                  >
+                    <h2>팡클리닉</h2>
+                  </a>
+                </li>
+                <li className="link">
+                  <a
+                    href="/contact"
+                    onClick={(e) => handleLinkClick(e, "/contact")}
+                  >
+                    <h2>오시는길</h2>
+                  </a>
+                </li>
+                <li className="link">
+                  <a
+                    href="#"
+                    onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }}
+                  >
+                    <h2>약력</h2>
+                  </a>
+                </li>
+                <li className="link">
+                  <a
+                    href="/interior"
+                    onClick={(e) => handleLinkClick(e, "/interior")}
+                  >
+                    <h2>병원인테리어</h2>
+                  </a>
+                </li>
+                <li className="link">
+                  <a
+                    href="#"
+                    onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }}
+                  >
+                    <h2>진료안내</h2>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="col col-2">
+              <div className="socials">
+                <div className="sub-col">
+                  <div className="menu-meta menu-commissions">
+                    <p>오시는길</p>
+                    <p>서울특별시 마포구 양화로 140, 에이치큐브 9층<br/> 
+                    (홍대입구역 9번 출구 앞, 애플스토어 건물)</p>
+                  </div>
+                  <div className="menu-meta">
+                    <p>주차안내</p>
+                    <p>건물 내 쾌적한 주차 타워 보유<br/>
+                     - 승용차 및 중형 SUV까지 주차 가능</p>
+                  </div>
                 </div>
-                <div className="menu-meta">
-                  <p>주차안내</p>
-                  <p>건물 내 쾌적한 주차 타워 보유<br/>
-                   - 승용차 및 중형 SUV까지 주차 가능</p>
-                </div>
-              </div>
-              <div className="sub-col">
-                <div className="menu-meta">
-                  <p>진료시간</p>
-                  <p> 월~금: 10:00~20:00<br />
-                      토/일/공휴일: 10:00~17:00<br />
-                      </p>
+                <div className="sub-col">
+                  <div className="menu-meta">
+                    <p>진료시간</p>
+                    <p> 월~금: 10:00~20:00<br />
+                        토/일/공휴일: 10:00~17:00<br />
+                        </p>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className="menu-mobile">
+            <div className="menu-section">
+              <h2 className="menu-section-title">PROGRAM</h2>
+              <div className="menu-section-content">
+                <div className="menu-program-group">
+                  <div className="menu-program-item">
+                    <button 
+                      className="menu-program-button"
+                      onClick={() => toggleProgram("fat")}
+                    >
+                      <span>지방프로그램</span>
+                      <svg 
+                        width="14" 
+                        height="14" 
+                        viewBox="0 0 14 14" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        className={expandedProgram === "fat" ? "rotated" : ""}
+                      >
+                        <path d="M7 10.5L3.5 7L10.5 7L7 10.5Z" fill="#CCCCCC" stroke="#CCCCCC" strokeWidth="0.9"/>
+                      </svg>
+                    </button>
+                    {expandedProgram === "fat" && (
+                      <div className="menu-program-submenu">
+                        <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }}>PP-1·PP-3</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }}>PP-5</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }}>PP-7</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }}>PM-1</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }}>PM-3</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }}>PM-5</a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="menu-program-item">
+                  <button className="menu-program-button">
+                    <span>쁘띠</span>
+                    
+                  </button>
+                </div>
+                <div className="menu-program-item">
+                  <button className="menu-program-button">
+                    <span>레이저</span>
+                    
+                  </button>
+                </div>
+                <div className="menu-program-item">
+                  <button className="menu-program-button">
+                    <span>PA센터</span>
+                    
+                  </button>
+                </div>
+                <div className="menu-program-item">
+                  <button className="menu-program-button">
+                    <span>줄기세포</span>
+                    
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="menu-divider"></div>
+
+
+            <div className="menu-section">
+              <h2 className="menu-section-title">팡클리닉</h2>
+              <div className="menu-section-content">
+                <a href="/contact" onClick={(e) => handleLinkClick(e, "/contact")} className="menu-story-link">
+                  오시는길
+                </a>
+                <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }} className="menu-story-link">
+                  약력
+                </a>
+                <a href="/interior" onClick={(e) => handleLinkClick(e, "/interior")} className="menu-story-link">
+                  병원인테리어
+                </a>
+                <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }} className="menu-story-link">
+                  진료안내
+                </a>
+              </div>
+            </div>
+
+            <div className="menu-divider"></div>
+
+            <div className="menu-section">
+              <h2 className="menu-section-title">STORY</h2>
+              <div className="menu-section-content">
+                <a href="/events" onClick={(e) => handleLinkClick(e, "/events")} className="menu-story-link">
+                  이벤트
+                </a>
+                <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }} className="menu-story-link">
+                  리얼스토리
+                </a>
+                <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }} className="menu-story-link">
+                  후기
+                </a>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>

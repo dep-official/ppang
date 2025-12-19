@@ -24,6 +24,7 @@ import CTAWindow from "@/components/CTAWindow/CTAWindow";
 import Copy from "@/components/Copy/Copy";
 import EventCard from "@/components/EventCard/EventCard";
 import FloatingBar from "@/components/FloatingBar/FloatingBar";
+import InteriorGallery from "@/components/InteriorGallery/InteriorGallery";
 import Image from "next/image";
 
 let isInitialLoad = true;
@@ -307,6 +308,7 @@ export default function Home() {
   const tagsRef = useRef(null);
   const [showPreloader, setShowPreloader] = useState(isInitialLoad);
   const [loaderAnimating, setLoaderAnimating] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const lenis = useLenis();
 
   useEffect(() => {
@@ -571,7 +573,7 @@ export default function Home() {
                 <img src="/gallery-callout/004.webp" alt="" />
               </div>
               <div className="gallery-callout-img gallery-callout-img-4">
-                <img src="/gallery-callout/003.webp" alt="" />
+                <img src="/gallery-callout/005.webp" alt="" />
               </div>
             </div>
           </div>
@@ -587,7 +589,11 @@ export default function Home() {
                   VIP 센터를 운영합니다.
                 </p>
               </Copy>
-              <AnimatedButton label="자세히보기" route="/interior" />
+              <AnimatedButton 
+                label="자세히보기" 
+                route={null}
+                onClick={() => setIsGalleryOpen(true)}
+              />
             </div>
           </div>
         </div>
@@ -600,6 +606,10 @@ export default function Home() {
       />
       <ConditionalFooter />
       <FloatingBar />
+      <InteriorGallery 
+        isOpen={isGalleryOpen} 
+        onClose={() => setIsGalleryOpen(false)} 
+      />
     </>
   );
 }
