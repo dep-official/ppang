@@ -36,7 +36,7 @@
   width: 100%;
   aspect-ratio: 16/16;
   border-radius: 1rem;
-  overflow: hidden;
+  overflow: visible;
   padding: 1rem;
   background-color: var(--base-400);
   will-change: opacity;
@@ -53,6 +53,13 @@
   will-change: opacity;
 }
 
+.client-reviews .client-review-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .client-reviews .client-review-copy h3 {
   text-align: center;
   font-size: 1.75rem;
@@ -62,6 +69,30 @@
 
 .client-reviews .client-review-copy h3 > div > div {
   will-change: transform;
+}
+
+.client-review-history-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #000;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.client-review-history-btn:hover {
+  background: #000;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(19, 97, 225, 0.3);
 }
 
 .client-reviews .clients-list {

@@ -1,6 +1,7 @@
 "use client";
 import "./ClientReviews.css";
 import clientReviewsContent from "./client-reviews-content";
+import ClientReviewPopup from "./ClientReviewPopup";
 
 import { useState, useEffect, useRef } from "react";
 
@@ -11,6 +12,8 @@ const ClientReviews = () => {
   const [activeClient, setActiveClient] = useState(0);
   const [visualClient, setVisualClient] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [selectedClient, setSelectedClient] = useState(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const clientRefs = useRef([]);
   const containerRef = useRef(null);
   const reviewTextRef = useRef(null);
@@ -168,6 +171,11 @@ const ClientReviews = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleHistoryClick = () => {
+    setSelectedClient(clientReviewsContent[activeClient]);
+    setIsPopupOpen(true);
+  };
+
   const handleClientClick = (index) => {
     if (index === activeClient || isAnimating) return;
 
@@ -280,6 +288,12 @@ const ClientReviews = () => {
           <div className="client-review-content">
             <figure className="client-review-img" ref={imageContainerRef}>
               <img src={clientReviewsContent[activeClient].image} alt="" />
+              <button
+                className="client-review-history-btn"
+                onClick={handleHistoryClick}
+              >
+                약력보기
+              </button>
             </figure>
             <div className="client-review-copy">
               <h3 ref={reviewTextRef} key={activeClient}>
@@ -315,6 +329,12 @@ const ClientReviews = () => {
           </div>
         </div>
       </div>
+      
+      <ClientReviewPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        client={selectedClient}
+      />
     </div>
   );
 };

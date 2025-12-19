@@ -258,14 +258,6 @@ const Nav = () => {
                 </li>
                 <li className="link">
                   <a
-                    href="#"
-                    onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }}
-                  >
-                    <h2>약력</h2>
-                  </a>
-                </li>
-                <li className="link">
-                  <a
                     href="/interior"
                     onClick={(e) => handleLinkClick(e, "/interior")}
                   >
@@ -379,7 +371,7 @@ const Nav = () => {
                 <a href="/contact" onClick={(e) => handleLinkClick(e, "/contact")} className="menu-story-link">
                   오시는길
                 </a>
-                <a href="#" onClick={(e) => { e.preventDefault(); handleLinkClick(e, "/"); }} className="menu-story-link">
+                <a href="/about" onClick={(e) => handleLinkClick(e, "/about")} className="menu-story-link">
                   약력
                 </a>
                 <a href="/interior" onClick={(e) => handleLinkClick(e, "/interior")} className="menu-story-link">

@@ -1,95 +1,58 @@
 "use client";
-import "./studio.css";
-
 import Nav from "@/components/Nav/Nav";
 import ConditionalFooter from "@/components/ConditionalFooter/ConditionalFooter";
-import HowWeWork from "@/components/HowWeWork/HowWeWork";
-import Spotlight from "@/components/Spotlight/Spotlight";
-import CTAWindow from "@/components/CTAWindow/CTAWindow";
-import Copy from "@/components/Copy/Copy";
+import "./about.css";
 
-const page = () => {
+export default function AboutPage() {
   return (
     <>
       <Nav />
-      <div className="page studio">
-        <section className="studio-hero">
-          <div className="container">
-            <div className="studio-hero-col">
-              <Copy delay={0.85}>
-                <p>
-                  We see design as more than construction. It is an ongoing
-                  dialogue between people, material, and place, shaped with
-                  care, and built to endure.
-                </p>
-              </Copy>
+      <div className="about-page">
+        <div className="about-container">
+          <h1 className="about-title">원장님 약력</h1>
+          
+          <div className="about-doctor">
+            <h2 className="doctor-name">이규승 총괄원장</h2>
+            
+            <div className="doctor-info-section">
+              <h3 className="section-title">현직</h3>
+              <ul className="doctor-list">
+                <li>팡클리닉 대표원장 (대한 비만 연구 의사회 인증 비만 전문 인증의)</li>
+              </ul>
             </div>
-            <div className="studio-hero-col">
-              <Copy delay={0.85}>
-                <h2>
-                  Our studio exists to create spaces that feel honest, lived in,
-                  and quietly transformative. Every project begins with
-                  listening and ends with an environment.
-                </h2>
-              </Copy>
-              <div className="studio-hero-hero-img">
-                <img src="/studio/about-hero.png" alt="" />
-              </div>
+
+            <div className="doctor-info-section">
+              <h3 className="section-title">경력</h3>
+              <ul className="doctor-list">
+                <li>전) 글로벌쁨의원 수석원장</li>
+                <li>전) 올라인의원 총괄원장</li>
+                <li>전) 원진성형외과 총괄원장</li>
+                <li>전) 포에버의원 총괄원장</li>
+                <li>전) 귀족성형외과 대표원장</li>
+                <li>전) 레아트성형외과 원장</li>
+                <li>전) 유캔비성형외과 원장</li>
+                <li>전) 설레임의원 대표원장</li>
+                <li>전) S라인성형외과 대표원장</li>
+                <li>전) 톡스유의원 대표원장</li>
+                <li>전) 샤인스타의원 수석원장</li>
+                <li>전) 위즈앤미의원 수석원장</li>
+              </ul>
             </div>
-          </div>
-        </section>
-        <section className="more-facts">
-          <div className="container">
-            <div className="more-facts-items">
-              <div className="fact">
-                <Copy delay={0.1}>
-                  <p>Models crafted</p>
-                  <h2>120+</h2>
-                </Copy>
-              </div>
-              <div className="fact">
-                <Copy delay={0.2}>
-                  <p>Materials explored</p>
-                  <h2>60</h2>
-                </Copy>
-              </div>
-              <div className="fact">
-                <Copy delay={0.3}>
-                  <p>Workshops hosted</p>
-                  <h2>25+</h2>
-                </Copy>
-              </div>
-              <div className="fact">
-                <Copy delay={0.4}>
-                  <p>Hours logged</p>
-                  <h2>3k+</h2>
-                </Copy>
-              </div>
-              <div className="fact">
-                <Copy delay={0.5}>
-                  <p>Prototypes build</p>
-                  <h2>724</h2>
-                </Copy>
-              </div>
+
+            <div className="doctor-info-section">
+              <h3 className="section-title">해외 자문</h3>
+              <ul className="doctor-list">
+                <li>전) 중국 화메이클리닉 자문의사</li>
+                <li>전) 중국 메이라이클리닉 자문의사</li>
+                <li>전) 중국 상해 썬택병원 성형외과 피부과 자문의사</li>
+                <li>전) 중국 북경 그린병원 성형외과 피부과 자문의사</li>
+                <li>전) 인도네시아 자타르타 M클리닉 자문의사</li>
+              </ul>
             </div>
           </div>
-        </section>
-        <section className="how-we-work-container">
-          <div className="container">
-            <HowWeWork />
-          </div>
-        </section>
-        <CTAWindow
-          img="/studio/about-cta-window.jpg"
-          header="The Archive"
-          callout="Designs that speak through form"
-          description="Each project tells a story of light, material, and rhythm. Explore how ideas take shape and grow into lasting environments."
-        />
-        <Spotlight />
+        </div>
       </div>
       <ConditionalFooter />
     </>
   );
-};
-
-export default page;
+}

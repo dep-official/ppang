@@ -46,6 +46,8 @@
   );
   z-index: 2;
   max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .hero .hero-content {
@@ -109,6 +111,13 @@
 .hero .hero-stats .stat-info {
   display: flex;
   align-items: flex-end;
+}
+
+@media (min-width: 1001px) {
+  .hero {
+    margin-top: 0;
+    padding-top: 0;
+  }
 }
 
 @media (max-width: 1000px) {

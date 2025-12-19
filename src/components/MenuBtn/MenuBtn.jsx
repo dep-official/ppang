@@ -19,5 +19,4 @@ const MenuBtn = ({ isOpen, toggleMenu }) => {
     </div>
   );
 };
-
 export default MenuBtn;
