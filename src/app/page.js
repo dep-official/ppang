@@ -10,10 +10,11 @@ import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Autoplay, Grid } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/grid";
 
 import Nav from "@/components/Nav/Nav";
 import ConditionalFooter from "@/components/ConditionalFooter/ConditionalFooter";
@@ -21,11 +22,286 @@ import AnimatedButton from "@/components/AnimatedButton/AnimatedButton";
 import ClientReviews from "@/components/ClientReviews/ClientReviews";
 import CTAWindow from "@/components/CTAWindow/CTAWindow";
 import Copy from "@/components/Copy/Copy";
+import EventCard from "@/components/EventCard/EventCard";
+import FloatingBar from "@/components/FloatingBar/FloatingBar";
 import Image from "next/image";
 
 let isInitialLoad = true;
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 CustomEase.create("hop", "0.9, 0, 0.1, 1");
+
+const eventCards = [
+  {
+    id: 1,
+    image: "/service/001.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 2,
+    image: "/service/002.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 3,
+    image: "/service/003.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "안보이는 뒷라인까지\n허벅지 돌려깎기",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 4,
+    image: "/service/004.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "승모근 집중관리\n패키지",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 5,
+    image: "/service/005.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 6,
+    image: "/service/006.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "9부위 용량 무제한\n전신풀튜닝",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 7,
+    image: "/service/007.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 8,
+    image: "/service/008.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "승모근 집중관리\n패키지",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 9,
+    image: "/service/009.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "안보이는 뒷라인까지\n허벅지 돌려깎기",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 10,
+    image: "/service/010.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "9부위 용량 무제한\n전신풀튜닝",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 11,
+    image: "/service/011.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 12,
+    image: "/service/012.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "승모근 집중관리\n패키지",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 13,
+    image: "/service/013.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "안보이는 뒷라인까지\n허벅지 돌려깎기",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 14,
+    image: "/service/014.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "9부위 용량 무제한\n전신풀튜닝",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 15,
+    image: "/service/015.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 16,
+    image: "/service/016.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "승모근 집중관리\n패키지",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 17,
+    image: "/service/017.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "안보이는 뒷라인까지\n허벅지 돌려깎기",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 18,
+    image: "/service/018.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "9부위 용량 무제한\n전신풀튜닝",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 19,
+    image: "/service/019.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 20,
+    image: "/service/020.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "승모근 집중관리\n패키지",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 21,
+    image: "/service/021.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "안보이는 뒷라인까지\n허벅지 돌려깎기",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 22,
+    image: "/service/022.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "9부위 용량 무제한\n전신풀튜닝",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 23,
+    image: "/service/023.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 24,
+    image: "/service/024.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "승모근 집중관리\n패키지",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 25,
+    image: "/service/025.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "안보이는 뒷라인까지\n허벅지 돌려깎기",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 26,
+    image: "/service/026.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "9부위 용량 무제한\n전신풀튜닝",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 27,
+    image: "/service/027.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 28,
+    image: "/service/028.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "승모근 집중관리\n패키지",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 29,
+    image: "/service/029.png",
+    badge: "쁘띠",
+    date: "~ 2025. 12. 27",
+    title: "안보이는 뒷라인까지\n허벅지 돌려깎기",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  },
+  {
+    id: 30,
+    image: "/service/030.png",
+    badge: "지방프로그램",
+    date: "~ 2025. 12. 27",
+    title: "9부위 용량 무제한\n전신풀튜닝",
+    originalPrice: "90,000  50%",
+    salePrice: "90"
+  }
+];
 
 export default function Home() {
   const tagsRef = useRef(null);
@@ -205,77 +481,70 @@ export default function Home() {
       
 
       <section className="events-container">
-        <div className="container text-center">
-          <div className="featured-projects-header-callout mb-[32px]">
-            <Copy delay={0.1}>
-              <p>Open Your Beauty, PPang Clinic</p>
-            </Copy>
-          </div>
-          <div className="featured-projects-header text-white">
-            <Copy delay={0.15}>
-              <h2 className="events-title">
-                30년간의 연구,<br/>
-                PP-1·3 용량 무제한<br/>
-                지방분해주사
-              </h2>
-            </Copy>
+        <div className="container">
+          <div className="events-section">
+            <div className="events-title-section">
+              <div className="events-title-group">
+                <Copy delay={0.1}>
+                  <h2 className="events-main-title">
+                    30년간의 연구,<br/>
+                    PP-1·3 용량 무제한<br/>
+                    지방분해주사
+                  </h2>
+                </Copy>
+                <Copy delay={0.15}>
+                  <p className="events-subtitle">
+                    과학이 아름다움을 만든다.<br/>
+                    체형 쁘띠를 연구하는 연구실
+                  </p>
+                </Copy>
+              </div>
+            </div>
+            <div className="events-cards-swiper-wrapper">
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay, Grid]}
+                spaceBetween={16}
+                slidesPerView={2}
+                grid={{
+                  rows: 2,
+                  fill: 'row',
+                }}
+                slidesPerGroup={2}
+                breakpoints={{
+                  1024: {
+                    slidesPerView: 2,
+                    grid: {
+                      rows: 2,
+                      fill: 'row',
+                    },
+                    slidesPerGroup: 2,
+                  },
+                }}
+                pagination={{ clickable: true }}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                loop={false}
+                className="events-swiper"
+              >
+                {eventCards.map((card) => (
+                  <SwiperSlide key={card.id}>
+                    <EventCard
+                      image={card.image}
+                      badge={card.badge}
+                      date={card.date}
+                      title={card.title}
+                      originalPrice={card.originalPrice}
+                      salePrice={card.salePrice}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
         </div>
-        <div className="mt-12">
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={64}
-            slidesPerView={1}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
-              1280: {
-                slidesPerView: 4,
-              },
-            }}
-            // navigation
-            pagination={{ clickable: true }}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            loop={true}
-            className="service-swiper"
-          >
-            {Array.from({ length: 15 }, (_, i) => {
-              const image1 = String(i * 2 + 1).padStart(3, '0');
-              const image2 = String(i * 2 + 2).padStart(3, '0');
-              return (
-                <SwiperSlide key={i} className="!h-auto">
-                  <div className="grid grid-cols-1 gap-[64px] h-full">
-                    <div className="aspect-square">
-                      <Image 
-                        src={`/service/${image1}.png`} 
-                        width={1000} 
-                        height={1000} 
-                        alt={`PP-${image1}`} 
-                        className="w-full h-full object-cover" 
-                      />
-                    </div>
-                    <div className="aspect-square">
-                      <Image 
-                        src={`/service/${image2}.png`} 
-                        width={1000} 
-                        height={1000} 
-                        alt={`PP-${image2}`} 
-                        className="w-full h-full object-cover" 
-                      />
-                    </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </div>
+       
       </section>
 
       <section className="client-reviews-container">
@@ -291,18 +560,18 @@ export default function Home() {
           <div className="gallery-callout-col">
             <div className="gallery-callout-row">
               <div className="gallery-callout-img gallery-callout-img-1">
-                <img src="/gallery-callout/gallery-callout-1.jpg" alt="" />
+                <img src="/gallery-callout/001.webp" alt="" />
               </div>
               <div className="gallery-callout-img gallery-callout-img-2">
-                <img src="/gallery-callout/gallery-callout-2.jpg" alt="" />
+                <img src="/gallery-callout/002.webp" alt="" />
               </div>
             </div>
             <div className="gallery-callout-row">
               <div className="gallery-callout-img gallery-callout-img-3">
-                <img src="/gallery-callout/gallery-callout-3.jpg" alt="" />
+                <img src="/gallery-callout/004.webp" alt="" />
               </div>
               <div className="gallery-callout-img gallery-callout-img-4">
-                <img src="/gallery-callout/gallery-callout-4.jpg" alt="" />
+                <img src="/gallery-callout/003.webp" alt="" />
               </div>
             </div>
           </div>
@@ -330,6 +599,7 @@ export default function Home() {
         description="science and aesthetics come together to create personalized body transformation solutions."
       />
       <ConditionalFooter />
+      <FloatingBar />
     </>
   );
 }

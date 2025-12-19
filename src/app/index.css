@@ -34,7 +34,8 @@
 .hero .hero-gradient {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   height: 50svh;
   background: #1a1818;
@@ -44,6 +45,7 @@
     rgba(20, 19, 19, 0) 100%
   );
   z-index: 2;
+  max-width: 700px;
 }
 
 .hero .hero-content {
@@ -114,7 +116,7 @@
     height: 175svh;
   } */
   .hero {
-    height: 78vh;
+    height: 100vh;
   }
   .hero .hero-content {
     width: 100%;
@@ -358,6 +360,88 @@
   padding: 240px 120px;
 }
 
+.events-section {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.events-title-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  gap: 24px;
+}
+
+.events-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.events-main-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #222222;
+  margin: 0;
+  text-align: left;
+}
+
+.events-subtitle {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0;
+  text-align: left;
+}
+
+.events-title-image {
+  width: 214.34px;
+  height: 213px;
+  flex-shrink: 0;
+}
+
+.events-cards-swiper-wrapper {
+  width: 100%;
+  padding: 0;
+}
+
+.events-swiper {
+  padding-bottom: 40px;
+}
+
+.events-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: auto;
+  width: 100%;
+}
+
+.events-swiper .swiper-pagination {
+  position: relative;
+  margin-top: 48px;
+  bottom: 0;
+}
+
+.events-swiper .swiper-pagination-bullet {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+}
+
+.events-swiper .swiper-pagination-bullet-active {
+  background: #000000;
+}
+
 .events-container .events-title {
   margin-bottom: 32px;
   margin-top: 18px;
@@ -402,7 +486,46 @@
     display: none;
   }
   .events-container {
-    padding: 120px 20px;
+    padding: 120px 0px;
+  }
+
+  .events-section {
+    max-width: 100%;
+  }
+
+  .events-title-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .events-title-group {
+    width: 100%;
+    align-items: start;
+  }
+
+  .events-main-title {
+    text-align: center;
+  }
+
+  .events-subtitle {
+    text-align: center;
+  }
+
+  .events-title-image {
+    width: 100%;
+    max-width: 214px;
+    height: auto;
+    margin-top: 24px;
+  }
+
+  .events-swiper {
+    padding-bottom: 30px;
+  }
+
+  .events-main-title {
+    font-size: 32px;
+    text-align: left;
   }
 }
 

@@ -1,0 +1,162 @@
+.event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  background: #FFFFFF;
+}
+
+.event-card-figure-badge {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.event-card-figure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.event-card-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #F2F2F2;
+  z-index: 1;
+}
+
+.event-card-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.event-card-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 6px;
+  height: 26px;
+  background: #000000;
+  z-index: 3;
+}
+
+.event-card-badge span {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.event-card-info-price {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.event-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card-date {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6em;
+  letter-spacing: -0.04em;
+  color: rgba(119, 119, 119, 0.6);
+  margin: 0 0 4px 0;
+}
+
+.event-card-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.event-card-price {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #1361E1;
+}
+
+.event-card-price-original {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1em;
+  letter-spacing: -0.04em;
+  color: #CCCCCC;
+  margin: 0;
+  text-decoration: line-through;
+}
+
+.event-card-price-sale {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.6em;
+  letter-spacing: -0.04em;
+  color: #1361E1;
+  margin: 0;
+}
+
+.event-card-price-sale span {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1em;
+  letter-spacing: -0.04em;
+  color: #000;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .event-card {
+    width: 100%;
+  }
+  
+  .event-card-title {
+    font-size: 14px;
+  }
+  
+  .event-card-date {
+    font-size: 11px;
+  }
+  
+  .event-card-price-sale {
+    font-size: 13px;
+  }
+  
+  .event-card-price-original {
+    font-size: 11px;
+  }
+  .event-card-price-sale {
+    font-size: 28px;
+    line-height: 1.2; 
+    margin-right: 8px;
+  }
+}
+

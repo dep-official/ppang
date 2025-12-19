@@ -66,13 +66,19 @@
   color: #fff;
 }
 
+.menu-wrapper
+.cta-window .cta-window-footer .cta-window-callout h3 {
+  color: #fff;
+}
+
+
 .cta-window .cta-window-footer .cta-window-description {
   width: 25%;
   text-align: right;
 }
 
 .cta-window .cta-window-footer p {
-  color: var(--base-300);
+  color: #fff;
 }
 
 @media (max-width: 1000px) {
