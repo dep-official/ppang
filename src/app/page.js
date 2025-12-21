@@ -472,8 +472,8 @@ export default function Home() {
       <section className="hero">
         <div className="hero-bg">
           <iframe
-            src="https://www.youtube.com/embed/rlb8gJGG9TA?autoplay=1&mute=1&loop=1&playlist=rlb8gJGG9TA&controls=0&modestbranding=1&rel=0&showinfo=0"
-            allow="autoplay; encrypted-media"
+            src="https://www.youtube.com/embed/KgbDa3-pFSg?autoplay=1&mute=1&loop=1&playlist=KgbDa3-pFSg&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1"
+            allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
             style={{ border: 'none' }}
           />
