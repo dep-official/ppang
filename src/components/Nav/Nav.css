@@ -8,7 +8,7 @@
   clip-path: circle(0% at 50% 50%);
   background-color: #FFFFFF;
   overflow: hidden;
-  padding: 0;
+  padding: 15svh 0 10svh;
   z-index: 100;
   padding-top: 64px;
   pointer-events: none;

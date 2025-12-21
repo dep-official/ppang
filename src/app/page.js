@@ -483,6 +483,15 @@ export default function Home() {
       
 
       <section className="events-container">
+        <video
+          className="events-bg-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/home/bg.mp4" type="video/mp4" />
+        </video>
         <div className="container">
           <div className="events-section">
             <div className="events-title-section">
