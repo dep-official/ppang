@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Nav from "@/components/Nav/Nav";
+import ConditionalFooter from "@/components/ConditionalFooter/ConditionalFooter";
 import Image from "next/image";
 import "./events.css";
 
@@ -134,6 +135,7 @@ export default function EventsPage() {
           </div>
         </div>
       </div>
+      <ConditionalFooter />
     </>
   );
 }
