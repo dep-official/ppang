@@ -489,8 +489,10 @@ export default function Home() {
           loop
           muted
           playsInline
+          preload="auto"
         >
           <source src="/home/bg.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
         <div className="container">
           <div className="events-section">
