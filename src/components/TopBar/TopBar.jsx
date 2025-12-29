@@ -4,83 +4,78 @@ import "./TopBar.css";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
 import { useViewTransition } from "@/hooks/useViewTransition";
+import { useLenis } from "lenis/react";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const TopBar = ({ onMenuClick, isMenuOpen }) => {
+const TopBar = ({ onMenuClick, isMenuOpen, onLogoClick }) => {
   const topBarRef = useRef(null);
   const { navigateWithTransition } = useViewTransition();
   const [language, setLanguage] = useState("KR");
-  let lastScrollY = 0;
-  let isScrolling = false;
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lenis = useLenis();
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const topBar = topBarRef.current;
-    if (!topBar) return;
-
-    const topBarHeight = topBar.offsetHeight;
-
-    gsap.set(topBar, { y: 0 });
-
-    const handleScroll = () => {
-      if (isScrolling) return;
-
-      isScrolling = true;
-      const currentScrollY = window.scrollY;
-      const direction = currentScrollY > lastScrollY ? 1 : -1;
-
-      if (direction === 1 && currentScrollY > 50) {
-        gsap.to(topBar, {
-          y: -topBarHeight,
-          duration: 1,
-          ease: "power4.out",
-        });
-      } else if (direction === -1) {
-        gsap.to(topBar, {
-          y: 0,
-          duration: 1,
-          ease: "power4.out",
-        });
+    const checkScroll = (scrollY) => {
+      // 스크롤 위치에 따라 배경 적용
+      setHasScrolled(scrollY > 10);
+      
+      // 스크롤 방향 감지
+      if (scrollY > lastScrollY.current && scrollY > 100) {
+        // 아래로 스크롤하고 100px 이상 스크롤했을 때 숨김
+        setIsVisible(false);
+      } else if (scrollY < lastScrollY.current) {
+        // 위로 스크롤하면 보이기
+        setIsVisible(true);
       }
-
-      lastScrollY = currentScrollY;
-
-      setTimeout(() => {
-        isScrolling = false;
-      }, 100);
+      
+      lastScrollY.current = scrollY;
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    if (lenis) {
+      const handleScroll = ({ scroll }) => {
+        checkScroll(scroll);
+      };
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      lenis.on("scroll", handleScroll);
+      checkScroll(lenis.scroll || 0); // 초기 상태 확인
 
-  useEffect(() => {
-    if (topBarRef.current) {
-      gsap.set(topBarRef.current, { y: 0 });
+      return () => {
+        lenis.off("scroll", handleScroll);
+      };
+    } else {
+      // Lenis가 없을 때 일반 스크롤 이벤트 사용
+      const handleScroll = () => {
+        const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+        checkScroll(scrollY);
+      };
+      
+      handleScroll(); // 초기 상태 확인
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
     }
-  });
-
+  }, [lenis]);
+  
   return (
-    <div className="top-bar" ref={topBarRef}>
+    <div 
+      className={`top-bar ${hasScrolled ? "scrolled" : ""} ${!isVisible ? "hidden" : ""}`} 
+      ref={topBarRef}
+    >
       <div className="top-bar-logo">
         <a
           href="/"
-          onClick={(e) => {
+          onClick={onLogoClick || ((e) => {
             e.preventDefault();
             navigateWithTransition("/");
-          }}
+          })}
         >
-          <img src="/logos/logo.svg" alt="팡클리닉" />
+          <img src="/logos/logo_symbol.svg" alt="팡클리닉" />
         </a>
       </div>
       <div className="top-bar-right">
+        
+
         <div className="top-bar-language">
           <Image 
             src="/topbar/ico-language.svg" 
@@ -90,6 +85,14 @@ const TopBar = ({ onMenuClick, isMenuOpen }) => {
           />
           <span className="language-text">{language}</span>
         </div>
+        <button className="top-bar-user-btn">
+          <Image 
+            src="/topbar/ico-user.svg" 
+            alt="사용자"
+            width={48}
+            height={48}
+          />
+        </button>
         <button 
           className={`top-bar-menu-btn ${isMenuOpen ? "open" : ""}`}
           onClick={(e) => {

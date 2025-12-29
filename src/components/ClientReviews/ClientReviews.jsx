@@ -174,6 +174,14 @@ const ClientReviews = () => {
   const handleHistoryClick = () => {
     setSelectedClient(clientReviewsContent[activeClient]);
     setIsPopupOpen(true);
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+  };
+
+  const handlePopupClose = () => {
+    setIsPopupOpen(false);
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
   };
 
   const handleClientClick = (index) => {
@@ -332,7 +340,7 @@ const ClientReviews = () => {
       
       <ClientReviewPopup
         isOpen={isPopupOpen}
-        onClose={() => setIsPopupOpen(false)}
+        onClose={handlePopupClose}
         client={selectedClient}
       />
     </div>

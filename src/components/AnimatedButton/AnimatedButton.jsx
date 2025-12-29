@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import { useViewTransition } from "@/hooks/useViewTransition";
 
 import { IoMdArrowForward } from "react-icons/io";
+import { IoMdAdd } from "react-icons/io";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -19,6 +20,8 @@ const AnimatedButton = ({
   animateOnScroll = true,
   delay = 0,
   onClick,
+  iconType = "arrow", // "arrow" or "plus"
+  variant = "default", // "default" or "full"
 }) => {
   const { navigateWithTransition } = useViewTransition();
   const buttonRef = useRef(null);
@@ -141,7 +144,7 @@ const AnimatedButton = ({
     <>
       <span className="circle" ref={circleRef} aria-hidden="true"></span>
       <div className="icon" ref={iconRef}>
-        <IoMdArrowForward />
+        {iconType === "plus" ? <IoMdAdd /> : <IoMdArrowForward />}
       </div>
       <span className="button-text" ref={textRef}>
         {label}
@@ -149,11 +152,13 @@ const AnimatedButton = ({
     </>
   );
 
+  const buttonClassName = variant === "full" ? "btn btn-full" : "btn";
+
   if (route) {
     return (
       <a
         href={route}
-        className="btn"
+        className={buttonClassName}
         ref={buttonRef}
         target="_blank"
         onClick={(e) => {
@@ -167,7 +172,7 @@ const AnimatedButton = ({
   }
 
   return (
-    <button className="btn" ref={buttonRef} onClick={onClick}>
+    <button className={buttonClassName} ref={buttonRef} onClick={onClick}>
       {buttonContent}
     </button>
   );

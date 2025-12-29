@@ -4,12 +4,15 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: fadeIn 0.3s ease;
+  overflow: hidden;
 }
 
 @keyframes fadeIn {
@@ -56,7 +59,7 @@
 .interior-gallery-image-wrapper {
   position: relative;
   width: 100%;
-  height: 80%;
+  height: 65%;
   display: flex;
   align-items: center;
   justify-content: center;

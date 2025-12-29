@@ -29,7 +29,8 @@
   max-height: 90vh;
   background: #FFFFFF;
   border-radius: 16px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   animation: slideUp 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -70,8 +71,6 @@
 .client-review-popup-content {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  max-height: 90vh;
 }
 
 .client-review-popup-image {

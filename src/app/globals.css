@@ -164,6 +164,22 @@ body.menu-open * {
 
 body.menu-open .menu,
 body.menu-open .menu *,
-body.menu-open .menu-toggle {
+body.menu-open .menu-toggle,
+body.menu-open .top-bar,
+body.menu-open .top-bar * {
   pointer-events: auto;
+}
+
+body.gallery-modal-open > *:not(.interior-gallery-overlay):not(.gallery-modal-overlay) {
+  filter: blur(10px);
+  transition: filter 0.3s ease;
+  pointer-events: none;
+}
+
+body.gallery-modal-open .interior-gallery-overlay,
+body.gallery-modal-open .interior-gallery-overlay *,
+body.gallery-modal-open .gallery-modal-overlay,
+body.gallery-modal-open .gallery-modal-overlay * {
+  pointer-events: auto;
+  filter: none !important;
 }

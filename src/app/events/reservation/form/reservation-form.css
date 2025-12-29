@@ -1,0 +1,519 @@
+.reservation-form-page {
+  min-height: 100vh;
+  background: #FFFFFF;
+  padding-top: 64px;
+  padding-bottom: 144px;
+}
+
+.reservation-form-top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #FFFFFF;
+  z-index: 100;
+  border-bottom: 1px solid #F7F7F7;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.reservation-form-back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reservation-form-container {
+  max-width: 343px;
+  margin: 0 auto;
+  padding: 20px 0 64px;
+}
+
+.reservation-form-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 16px;
+}
+
+.reservation-form-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #222222;
+  margin: 0;
+}
+
+.reservation-form-description {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #8E8E93;
+  margin: 0;
+}
+
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reservation-form-section {
+  padding: 20px 0;
+}
+
+.reservation-form-label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  display: block;
+  margin-bottom: 0;
+  padding: 0 28px 20px;
+}
+
+.reservation-form-divider {
+  width: 100%;
+  height: 10px;
+  background: #F5F5F5;
+}
+
+/* 라디오 버튼 */
+.reservation-form-radio-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 4px 0;
+  margin-top: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.reservation-form-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.reservation-form-radio input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  appearance: none;
+  border: 1px solid #D5D5D5;
+  border-radius: 50%;
+  background: transparent;
+  position: relative;
+}
+
+.reservation-form-radio input[type="radio"]:checked {
+  border: 6px solid #1361E1;
+  background: transparent;
+}
+
+.reservation-form-radio-label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+/* 캘린더 */
+.reservation-form-calendar-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 16px;
+  align-items: flex-start;
+}
+
+.reservation-form-calendar {
+  width: 311px;
+  border: 1px solid #EAEDEF;
+  border-radius: 8px;
+  opacity: 0.7;
+  overflow: hidden;
+}
+
+.reservation-form-date-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  width: 100%;
+}
+
+.reservation-form-date-input {
+  width: 100%;
+  padding: 18px 20px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5em;
+  letter-spacing: 0.02em;
+  color: #000000;
+  background: #F8F8F8;
+  border: 1px solid #EAEDEF;
+  border-radius: 8px;
+  outline: none;
+}
+
+.reservation-form-date-input::placeholder {
+  color: #000000;
+}
+
+/* react-day-picker 커스텀 스타일 */
+.custom-day-picker {
+  --rdp-cell-size: 28px;
+  --rdp-accent-color: #1361E1;
+  --rdp-background-color: transparent;
+  --rdp-accent-color-dark: #1361E1;
+  --rdp-background-color-dark: transparent;
+  --rdp-outline: none;
+  --rdp-outline-selected: none;
+  --rdp-selected-border: none;
+  padding: 20px 16px;
+  margin: 0;
+  width: 100%;
+}
+
+.custom-day-picker .rdp-month {
+  margin: 0;
+  width: 100%;
+}
+
+.custom-day-picker .rdp-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 0 4px;
+  margin-bottom: 12px;
+}
+
+.custom-day-picker .rdp-caption_label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.38em;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-day-picker .rdp-nav {
+  display: flex;
+  gap: 0;
+}
+
+.custom-day-picker .rdp-button_next,
+.custom-day-picker .rdp-button_previous {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.custom-day-picker .rdp-button_next:hover,
+.custom-day-picker .rdp-button_previous:hover {
+  background: none;
+}
+
+.custom-day-picker .rdp-button_previous {
+  display: none;
+}
+
+.custom-day-picker .rdp-button_next::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10L12 14L16 10' stroke='%231F1F1F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.custom-day-picker .rdp-head_row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.custom-day-picker .rdp-head_cell {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.19em;
+  letter-spacing: -0.05em;
+  color: #999999;
+  text-transform: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-day-picker .rdp-table {
+  width: 100%;
+  margin: 0;
+}
+
+.custom-day-picker .rdp-tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.custom-day-picker .rdp-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin: 0;
+}
+
+.custom-day-picker .rdp-cell {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-day-picker .rdp-button {
+  width: 28px;
+  height: 28px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1em;
+  color: #000000;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-day-picker .rdp-button:hover {
+  background: rgba(19, 97, 225, 0.1);
+}
+
+.custom-day-picker .rdp-day_selected,
+.custom-day-picker .rdp-day_selected:focus-visible,
+.custom-day-picker .rdp-day_selected:hover {
+  background: #1361E1;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.custom-day-picker .rdp-day_outside {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 입력 필드 */
+.reservation-form-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 16px;
+  margin-bottom: 20px;
+}
+
+.reservation-form-section > .reservation-form-input-group:first-child {
+  margin-top: 0;
+}
+
+.reservation-form-input-label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.reservation-form-input {
+  width: 100%;
+  padding: 18px 20px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5em;
+  letter-spacing: 0.02em;
+  color: #000000;
+  background: #FFFFFF;
+  border: 1px solid #EAEDEF;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.reservation-form-input::placeholder {
+  color: #777777;
+}
+
+.reservation-form-input:focus {
+  border-color: #1361E1;
+}
+
+/* 동의 섹션 */
+.reservation-form-section.agreement-section {
+  background: #FAFAFA;
+  padding: 20px 16px 32px;
+  margin: 0;
+}
+
+.reservation-form-agreement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reservation-form-agreement:last-child {
+  margin-bottom: 0;
+}
+
+.reservation-form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.reservation-form-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  appearance: none;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px;
+  background: #FFFFFF;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.reservation-form-checkbox input[type="checkbox"]:checked {
+  background: #FFFFFF;
+  border-color: #D9D9D9;
+}
+
+.reservation-form-checkbox input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 5px;
+  height: 9px;
+  border: solid #000000;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.reservation-form-checkbox-label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.reservation-form-detail-link {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #999999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* 푸터 버튼 */
+.reservation-form-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  background: #1361E1;
+  z-index: 100;
+  max-width: 100%;
+}
+
+.reservation-form-submit-btn {
+  width: 100%;
+  height: 64px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5em;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  background: #1361E1;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reservation-form-submit-btn:hover {
+  opacity: 0.9;
+}
+
+.reservation-form-submit-btn:active {
+  opacity: 0.8;
+}
+
+/* 모바일 대응 */
+@media (min-width: 768px) {
+  .reservation-form-container {
+    max-width: 800px;
+  }
+
+  .reservation-form-footer {
+    max-width: 800px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .reservation-form-top-header {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}

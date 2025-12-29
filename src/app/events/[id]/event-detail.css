@@ -76,6 +76,13 @@
   transition: all 0.3s ease;
   text-align: center;
 }
+.event-detail-tab:first-child {
+  width: 50%;
+}
+
+.event-detail-tab:last-child {
+  margin-right: 8px;
+}
 
 .event-detail-tab.active {
   color: #000000;
@@ -130,6 +137,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  padding: 0 8px;
 }
 
 .event-detail-category-row .event-detail-category-name {
@@ -153,6 +161,31 @@
   color: #000000;
   flex: 1;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 8px 4px;
+  border-radius: 4px;
+}
+
+.event-detail-category-name:hover {
+  background-color: #F7F7F7;
+  color: #000000;
+}
+
+.event-detail-category-name.active {
+  font-weight: 600;
+  color: #000000;
+  background-color: #F7F7F7;
+}
+
+/* 짝수 인덱스 (0, 2, 4...) - 왼쪽 margin */
+.event-detail-category-name.even {
+  margin-left: 8px;
+}
+
+/* 홀수 인덱스 (1, 3, 5...) - 오른쪽 margin */
+.event-detail-category-name.odd {
+  margin-right: 8px;
 }
 
 .event-detail-treatments {
@@ -329,17 +362,17 @@
 
 @media (min-width: 768px) {
   .event-detail-page {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
   }
 
   .event-detail-header {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
   }
 
   .event-detail-footer {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
   }
 }

@@ -6,7 +6,7 @@ import Copy from "../Copy/Copy";
 const CTAWindow = ({ img, header, callout, description }) => {
   return (
     <section className="cta-window">
-      <div className="container">
+      <a className="container" href="interior">
         <div className="cta-window-img-wrapper">
           <img src={img} alt="" />
         </div>
@@ -28,7 +28,7 @@ const CTAWindow = ({ img, header, callout, description }) => {
             </Copy>
           </div>
         </div>
-      </div>
+      </a>
     </section>
   );
 };

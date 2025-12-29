@@ -43,3 +43,5 @@ next-env.d.ts
 # large video files
 *.mp4
 public/home/video_main.mp4
+
+.claude

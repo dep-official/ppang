@@ -2,17 +2,53 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  padding: 1rem 2rem;
+  right: 0;
+  width: 100%;
+  padding: 1rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
   pointer-events: auto;
+  background: transparent;
+  transition: transform 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease;
+  transform: translateY(0);
+}
+
+.top-bar.scrolled {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.top-bar.hidden {
+  transform: translateY(-100%);
+}
+
+.top-bar-user-btn {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  transition: opacity 0.3s ease;
+}
+
+.top-bar-user-btn:hover {
+  opacity: 0.7;
+}
+
+/* Safari 및 구형 브라우저 호환성 */
+@supports not (backdrop-filter: blur(1px)) {
+  .top-bar.scrolled {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
 }
 
 .top-bar .top-bar-logo {
-  width: 120px;
+  width: 72px;
+  pointer-events: auto;
+}
+
+.top-bar .top-bar-logo a {
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .top-bar-right {
@@ -51,7 +87,9 @@
   pointer-events: auto !important;
   z-index: 1001;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  width: 24px;
+  height: 24px;
 }
 
 .top-bar-menu-btn:hover {
@@ -62,6 +100,13 @@
   background: transparent;
   border-radius: 0;
   padding: 0;
+  box-shadow: none;
+}
+
+.top-bar-menu-btn.open .menu-close-icon {
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .menu-open-icon {
@@ -70,10 +115,7 @@
 }
 
 .top-bar-menu-btn.open .menu-open-icon {
-  transform: rotate(-45deg) translateX(-100%);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  display: none;
 }
 
 .menu-close-icon {
@@ -93,6 +135,10 @@
     padding: 0.5rem 1rem;
   }
   .top-bar .top-bar-logo {
-    width: 96px;
+    width: 50px;
+  }
+  .short-card-info-price {
+    height: 80px;
   }
 }
+

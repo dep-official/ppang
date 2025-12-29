@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Nav from "@/components/Nav/Nav";
 import EventDetailContent from "./EventDetailContent";
 
@@ -14,7 +15,9 @@ export default function EventDetailPage({ params }) {
   return (
     <>
       <Nav />
-      <EventDetailContent />
+      <Suspense fallback={<div>Loading...</div>}>
+        <EventDetailContent />
+      </Suspense>
     </>
   );
 }

@@ -97,7 +97,7 @@
 
 .client-reviews .clients-list {
   position: absolute;
-  bottom: 8rem;
+  bottom: 5rem;
   left: 50%;
   width: 100%;
   transform: translate(-50%, -50%);

@@ -1,6 +1,5 @@
 import "./globals.css";
 import ClientLayout from "@/client-layout";
-import TopBar from "@/components/TopBar/TopBar";
 
 export const metadata = {
   title: "팡클리닉",
@@ -15,14 +14,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
       <head>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
       </head>
       
-      <body>
+      <body suppressHydrationWarning>
         <ClientLayout>
-          <TopBar />
           {children}
         </ClientLayout>
       </body>

@@ -1,0 +1,344 @@
+.doctor-page {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background: #FFFFFF;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  overflow-x: hidden;
+}
+
+.doctor-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.doctor-layout {
+  display: flex;
+  gap: 80px;
+  align-items: stretch;
+}
+
+.doctor-layout-second {
+  margin-top: 120px;
+}
+
+/* Left Section */
+.doctor-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  background-color: #efefef;
+  background-image: url('/home/map.png');
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 100px 40px 40px 40px;
+  flex: 2;
+  min-width: 0;
+  position: relative;
+}
+
+.doctor-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #efefef;
+  opacity: 0.3;
+  z-index: 0;
+  border-radius: 24px;
+}
+
+
+.doctor-left-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 40px;
+  text-align: left;
+}
+
+.doctor-english-name {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.1em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.doctor-english-name-last {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.1em;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.doctor-korean-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0;
+}
+
+.doctor-korean-subtitle {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0;
+}
+
+.doctor-description {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.8em;
+  letter-spacing: -0.04em;
+  color: #333333;
+  margin: 0;
+  margin-top: 8px;
+}
+
+/* Right Section */
+.doctor-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.doctor-right-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.doctor-photo {
+  flex: 0 0 auto;
+  width: 400px;
+  max-width: 400px;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+}
+
+.doctor-photo .doctor-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.doctor-korean-name {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.doctor-position {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6em;
+  letter-spacing: -0.04em;
+  color: #333333;
+  margin: 0;
+}
+
+.doctor-career,
+.doctor-career-history {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.doctor-career-history {
+  margin-bottom: 32px;
+}
+
+.doctor-associations {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.doctor-section-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0;
+}
+
+.doctor-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.doctor-list li {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.8em;
+  letter-spacing: -0.04em;
+  color: #333333;
+  padding-left: 20px;
+  position: relative;
+}
+
+.doctor-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #000000;
+  font-weight: 400;
+}
+
+/* Mobile Styles */
+@media (max-width: 1024px) {
+  .doctor-container {
+    padding: 0 40px;
+  }
+  
+  .doctor-left {
+    width: 100%;
+    flex: none;
+    justify-content: space-between;
+  }
+  
+  .doctor-photo {
+    width: 300px;
+    max-width: 300px;
+  }
+
+  .doctor-layout {
+    flex-direction: column;
+    gap: 60px;
+  }
+  
+  .doctor-right {
+    width: 100%;
+    flex: none;
+  }
+
+  .doctor-layout-second {
+    margin-top: 80px;
+  }
+  
+  .doctor-left-content {
+    width: 100%;
+  }
+
+  .doctor-english-name,
+  .doctor-english-name-last {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .doctor-right {
+    width: 100%;
+  }
+  
+  .doctor-page {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  .doctor-english-name-last {
+    margin-bottom: 4px;
+  }
+  
+  .doctor-container {
+    padding: 0 16px;
+  }
+
+  .doctor-layout {
+    gap: 48px;
+  }
+
+  .doctor-layout-second {
+    margin-top: 60px;
+  }
+
+  .doctor-left {
+    padding: 40px 40px 0;
+    flex-direction: column;
+  }
+  
+  .doctor-photo {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .doctor-korean-title {
+    margin-bottom: 24px;
+  }
+
+  .doctor-description {
+    display: none;
+  }
+
+  .doctor-english-name,
+  .doctor-english-name-last {
+    font-size: 40px;
+  }
+
+  .doctor-korean-title,
+  .doctor-korean-subtitle {
+    font-size: 18px;
+  }
+
+  .doctor-korean-name {
+    font-size: 22px;
+  }
+
+  .doctor-position {
+    font-size: 15px;
+  }
+
+  .doctor-section-title {
+    font-size: 17px;
+  }
+
+  .doctor-list li {
+    font-size: 15px;
+  }
+}

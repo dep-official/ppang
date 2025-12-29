@@ -56,9 +56,13 @@ const Footer = () => {
                 </Copy>
               </div>
               <Copy delay={0.2}>
-                <div className="flex items-start leading-[1.2] flex-col text-white">
-                   <h2 className="inline">월-금: 10:00 - 19:00</h2><br/>
-                   <h2 className="inline">일/공휴일: 휴진</h2>
+                <div className="flex items-start leading-[1.2] flex-col text-white gap-1 mb-4">
+                   <h2 className="inline">월~금: 10:00~20:00</h2>
+                </div>
+              </Copy>
+              <Copy delay={0.2}>
+                <div className="flex items-start leading-[1.2] flex-col text-white gap-1 ">
+                  <h2 className="inline">토~일/공휴일: 10:00~17:00</h2>
                 </div>
               </Copy>
             </div>
@@ -109,12 +113,12 @@ const Footer = () => {
         <div className="container footer-socials">
           <div className="footer-meta-col">
             <div className="footer-socials-wrapper" ref={socialIconsRef}>
-              <div className="icon">
+              <a href="https://www.instagram.com/ppang_clinic" target="_blank" rel="noopener noreferrer" className="icon">
                 <RiInstagramLine />
-              </div>
-              <div className="icon">
+              </a>
+              <a href="https://www.youtube.com/@ppang_clinic" target="_blank" rel="noopener noreferrer" className="icon">
                 <RiYoutubeLine />
-              </div>
+              </a>
             </div>
           </div>
           <div className="footer-meta-col">

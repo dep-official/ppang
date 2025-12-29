@@ -1,10 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import "./InteriorGallery.css";
 
 export default function InteriorGallery({ isOpen, onClose }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   const images = [
     "/gallery-callout/001.webp",
@@ -14,21 +16,28 @@ export default function InteriorGallery({ isOpen, onClose }) {
   ];
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("gallery-modal-open");
     } else {
       document.body.style.overflow = "";
+      document.body.classList.remove("gallery-modal-open");
     }
 
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("gallery-modal-open");
     };
   }, [isOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isOpen) return;
-      
+
       if (e.key === "Escape") {
         onClose();
       } else if (e.key === "ArrowLeft") {
@@ -50,12 +59,12 @@ export default function InteriorGallery({ isOpen, onClose }) {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  return createPortal(
     <div className="interior-gallery-overlay" onClick={onClose}>
       <div className="interior-gallery-container" onClick={(e) => e.stopPropagation()}>
-        <button 
+        <button
           className="interior-gallery-close"
           onClick={onClose}
           aria-label="닫기"
@@ -64,8 +73,8 @@ export default function InteriorGallery({ isOpen, onClose }) {
             <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
-        
-        <button 
+
+        <button
           className="interior-gallery-nav interior-gallery-prev"
           onClick={handlePrev}
           aria-label="이전 이미지"
@@ -86,7 +95,7 @@ export default function InteriorGallery({ isOpen, onClose }) {
           />
         </div>
 
-        <button 
+        <button
           className="interior-gallery-nav interior-gallery-next"
           onClick={handleNext}
           aria-label="다음 이미지"
@@ -119,7 +128,7 @@ export default function InteriorGallery({ isOpen, onClose }) {
           {currentIndex + 1} / {images.length}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
-

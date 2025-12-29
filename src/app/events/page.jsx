@@ -105,7 +105,7 @@ export default function EventsPage() {
               <div 
                 key={event.id} 
                 className="events-page-card"
-                onClick={() => router.push(`/events/${event.id}`)}
+                onClick={() => router.push(`/events/reservation`)}
                 style={{ cursor: 'pointer' }}
               >
                 <div className="events-page-card-image">

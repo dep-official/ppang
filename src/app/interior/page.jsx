@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav/Nav";
 import Gallery from "@/components/Gallery/Gallery";
+import ConditionalFooter from "@/components/ConditionalFooter/ConditionalFooter";
 
 const page = () => {
   return (
@@ -8,6 +9,7 @@ const page = () => {
       <div className="page blueprints">
         <Gallery />
       </div>
+      <ConditionalFooter />
     </>
   );
 };

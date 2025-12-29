@@ -21,16 +21,28 @@ export default function FloatingBar() {
 
   return (
     <div className={`floating-bar ${isVisible ? "visible" : ""}`}>
-      <a 
-        href="https://www.instagram.com/ppang_clinic"
-        target="_blank"
+       <a 
+        href="/events/reservation/form"
         rel="noopener noreferrer"
         className="floating-bar-button"
-        aria-label="인스타그램"
+        aria-label="예약"
       >
         <Image 
-          src="/floating-bar/ico-instagram-1.svg" 
-          alt="인스타그램"
+          src="/floating-bar/ico-reservation.svg" 
+          alt="예약"
+          width={64}
+          height={64}
+        />
+      </a>
+      <a 
+        href="/events"
+        rel="noopener noreferrer"
+        className="floating-bar-button"
+        aria-label="이벤트"
+      >
+        <Image 
+          src="/floating-bar/ico-events.svg" 
+          alt="이벤트"
           width={64}
           height={64}
         />
@@ -50,7 +62,7 @@ export default function FloatingBar() {
         />
       </a>
       <a 
-        href="https://www.youtube.com/@ppangclinic"
+        href="https://www.youtube.com/@ppang_clinic"
         target="_blank"
         rel="noopener noreferrer"
         className="floating-bar-button"
