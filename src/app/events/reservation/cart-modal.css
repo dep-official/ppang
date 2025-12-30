@@ -95,6 +95,18 @@
 
 .cart-modal-item-info {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cart-modal-item-category {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.4em;
+  color: #999999;
+  text-transform: uppercase;
 }
 
 .cart-modal-item-title {
@@ -102,9 +114,16 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5em;
-  text-transform: uppercase;
   color: #000000;
   margin: 0;
+}
+
+.cart-modal-item-price {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.4em;
+  color: #000000;
 }
 
 .cart-modal-item-remove {

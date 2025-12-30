@@ -7,10 +7,15 @@ export default function EventCard({
   date, 
   title, 
   originalPrice, 
-  salePrice 
+  salePrice,
+  onClick,
 }) {
   return (
-    <div className="event-card">
+    <div 
+      className="event-card"
+      onClick={onClick}
+      style={{ cursor: onClick ? "pointer" : "default" }}
+    >
       <div className="event-card-figure-badge">
         <div className="event-card-figure">
           <div className="event-card-mask"></div>

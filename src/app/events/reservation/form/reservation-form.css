@@ -2,21 +2,23 @@
   min-height: 100vh;
   background: #FFFFFF;
   padding-top: 64px;
-  padding-bottom: 144px;
+  padding-bottom: 80px;
 }
 
-.reservation-form-top-header {
+/* Header - event-detail과 동일한 디자인 */
+.reservation-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 64px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
   background: #FFFFFF;
   z-index: 100;
   border-bottom: 1px solid #F7F7F7;
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
 }
 
 .reservation-form-back {
@@ -29,42 +31,59 @@
   justify-content: center;
 }
 
+.reservation-form-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.reservation-form-header-spacer {
+  width: 36px;
+  height: 36px;
+}
+
 .reservation-form-container {
   max-width: 343px;
   margin: 0 auto;
-  padding: 20px 0 64px;
-}
-
-.reservation-form-header {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 20px 16px;
-}
-
-.reservation-form-title {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 1.4em;
-  letter-spacing: -0.04em;
-  color: #222222;
-  margin: 0;
-}
-
-.reservation-form-description {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.4em;
-  letter-spacing: -0.04em;
-  color: #8E8E93;
-  margin: 0;
+  padding: 20px 0 0;
 }
 
 .reservation-form {
   display: flex;
   flex-direction: column;
+}
+
+/* 제목 및 설명 */
+.reservation-form-intro {
+  padding: 32px 28px 20px;
+  text-align: center;
+}
+
+.reservation-form-intro-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0 0 12px 0;
+}
+
+.reservation-form-intro-description {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6em;
+  letter-spacing: -0.02em;
+  color: #777777;
+  margin: 0;
 }
 
 .reservation-form-section {
@@ -150,12 +169,18 @@
   overflow: hidden;
 }
 
+/* 날짜+시간 래퍼 */
+.reservation-form-datetime-wrapper {
+  width: 100%;
+}
+
 .reservation-form-date-input-wrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 0;
   width: 100%;
+  margin-top: 20px;
 }
 
 .reservation-form-date-input {
@@ -171,170 +196,216 @@
   border: 1px solid #EAEDEF;
   border-radius: 8px;
   outline: none;
+  transition: all 0.2s ease;
+}
+
+.reservation-form-date-input:focus {
+  border-color: #1361E1;
 }
 
 .reservation-form-date-input::placeholder {
+  color: #999999;
+}
+
+/* 시간 선택 섹션 */
+.reservation-form-time-section {
+  margin-top: 20px;
+}
+
+.reservation-form-time-label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
   color: #000000;
-}
-
-/* react-day-picker 커스텀 스타일 */
-.custom-day-picker {
-  --rdp-cell-size: 28px;
-  --rdp-accent-color: #1361E1;
-  --rdp-background-color: transparent;
-  --rdp-accent-color-dark: #1361E1;
-  --rdp-background-color-dark: transparent;
-  --rdp-outline: none;
-  --rdp-outline-selected: none;
-  --rdp-selected-border: none;
-  padding: 20px 16px;
-  margin: 0;
-  width: 100%;
-}
-
-.custom-day-picker .rdp-month {
-  margin: 0;
-  width: 100%;
-}
-
-.custom-day-picker .rdp-caption {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 8px 0 4px;
+  display: block;
   margin-bottom: 12px;
 }
 
-.custom-day-picker .rdp-caption_label {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.38em;
-  color: #000000;
-  margin: 0;
-  padding: 0;
+.reservation-form-time-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
 }
 
-.custom-day-picker .rdp-nav {
-  display: flex;
-  gap: 0;
-}
-
-.custom-day-picker .rdp-button_next,
-.custom-day-picker .rdp-button_previous {
-  background: none;
-  border: none;
+.reservation-form-time-btn {
+  height: 40px;
+  padding: 0 12px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #666666;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 6px;
   cursor: pointer;
-  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.reservation-form-time-btn:hover {
+  border-color: #1361E1;
+  color: #1361E1;
+  background: #F0F7FF;
+}
+
+.reservation-form-time-btn.active {
+  background: #1361E1;
+  color: #FFFFFF;
+  border-color: #1361E1;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .reservation-form-time-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* shadcn/ui Calendar 커스텀 스타일 - 미니멀 디자인 */
+.shadcn-calendar {
+  width: 100%;
+  padding: 24px 20px;
+  font-family: 'Pretendard', sans-serif;
+  background: #FFFFFF;
+}
+
+/* 월/년 표시 */
+.shadcn-calendar .rdp-month_caption {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4em;
+  color: #000000;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* 네비게이션 버튼 */
+.shadcn-calendar .rdp-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.shadcn-calendar .rdp-button_previous,
+.shadcn-calendar .rdp-button_next {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #E0E0E0;
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shadcn-calendar .rdp-button_previous:hover,
+.shadcn-calendar .rdp-button_next:hover {
+  background: #F5F5F5;
+  border-color: #1361E1;
+  color: #1361E1;
+}
+
+/* 요일 헤더 */
+.shadcn-calendar .rdp-weekday {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #666666;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  text-transform: none;
 }
 
-.custom-day-picker .rdp-button_next:hover,
-.custom-day-picker .rdp-button_previous:hover {
-  background: none;
-}
-
-.custom-day-picker .rdp-button_previous {
-  display: none;
-}
-
-.custom-day-picker .rdp-button_next::after {
-  content: '';
-  width: 24px;
-  height: 24px;
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10L12 14L16 10' stroke='%231F1F1F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: none;
-}
-
-.custom-day-picker .rdp-head_row {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+/* 주 간격 */
+.shadcn-calendar .rdp-week {
+  display: flex;
+  gap: 4px;
   margin-bottom: 4px;
 }
 
-.custom-day-picker .rdp-head_cell {
+/* 날짜 버튼 기본 */
+.shadcn-calendar button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   font-family: 'Pretendard', sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.19em;
-  letter-spacing: -0.05em;
-  color: #999999;
-  text-transform: none;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.custom-day-picker .rdp-table {
-  width: 100%;
-  margin: 0;
-}
-
-.custom-day-picker .rdp-tbody {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.custom-day-picker .rdp-row {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  margin: 0;
-}
-
-.custom-day-picker .rdp-cell {
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.custom-day-picker .rdp-button {
-  width: 28px;
-  height: 28px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 12px;
+  font-weight: 300;
+  font-size: 15px;
   line-height: 1em;
   color: #000000;
   background: transparent;
   border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  padding: 0;
-  margin: 0 auto;
+  transition: all 0.2s ease;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.custom-day-picker .rdp-button:hover {
-  background: rgba(19, 97, 225, 0.1);
+/* Hover 효과 */
+.shadcn-calendar button:hover:not([data-selected-single="true"]) {
+  background: #F5F5F5;
+  color: #666666;
 }
 
-.custom-day-picker .rdp-day_selected,
-.custom-day-picker .rdp-day_selected:focus-visible,
-.custom-day-picker .rdp-day_selected:hover {
+/* 선택된 날짜 */
+.shadcn-calendar button[data-selected-single="true"] {
   background: #1361E1;
   color: #FFFFFF;
-  font-weight: 500;
+  font-weight: 400;
 }
 
-.custom-day-picker .rdp-day_outside {
+/* 오늘 날짜 (TODAY 라벨) */
+.shadcn-calendar .rdp-today button {
+  color: #000000;
+}
+
+.shadcn-calendar .rdp-today button::after {
+  content: 'TODAY';
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 600;
+  color: #000000;
+  letter-spacing: 0.5px;
+}
+
+/* 선택된 오늘 날짜 */
+.shadcn-calendar .rdp-today button[data-selected-single="true"]::after {
+  color: #1361E1;
+}
+
+/* 외부 날짜 (이전/다음 달) */
+.shadcn-calendar .rdp-outside button {
   opacity: 0;
   pointer-events: none;
+}
+
+/* 비활성 날짜 (지난 날짜) */
+.shadcn-calendar .rdp-disabled button {
+  opacity: 1;
+  cursor: not-allowed;
+  color: #757575;
+}
+
+.shadcn-calendar .rdp-disabled button:hover {
+  background: transparent;
+  color: #757575;
+}
+
+/* 주말 강조 (선택사항) */
+.shadcn-calendar .rdp-weekday:first-child,
+.shadcn-calendar .rdp-weekday:last-child {
+  color: #999999;
 }
 
 /* 입력 필드 */
@@ -468,27 +539,70 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0;
-  background: #1361E1;
+  height: 64px;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border-top: 1px solid #D9D9D9;
   z-index: 100;
-  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 76px;
 }
 
-.reservation-form-submit-btn {
-  width: 100%;
-  height: 64px;
+.reservation-form-total {
+  display: flex;
+  align-items: center;
+}
+
+.reservation-form-total-price {
   font-family: 'Pretendard', sans-serif;
   font-weight: 600;
   font-size: 20px;
-  line-height: 1.5em;
-  letter-spacing: 0.02em;
-  color: #FFFFFF;
-  background: #1361E1;
-  border: none;
-  cursor: pointer;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.reservation-form-submit-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
+  padding: 14px 20px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  background: #1361E1;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.reservation-form-badge {
+  width: 16px;
+  height: 16px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6.67px;
+  flex-shrink: 0;
+}
+
+.reservation-form-badge span {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 9.33px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #1361E1;
+  text-align: center;
 }
 
 .reservation-form-submit-btn:hover {
@@ -499,8 +613,18 @@
   opacity: 0.8;
 }
 
+.reservation-form-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* 모바일 대응 */
 @media (min-width: 768px) {
+  .reservation-form-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
   .reservation-form-container {
     max-width: 800px;
   }
@@ -508,12 +632,11 @@
   .reservation-form-footer {
     max-width: 800px;
     margin: 0 auto;
+  }
+
+  .reservation-form-header {
+    max-width: 800px;
     left: 50%;
     transform: translateX(-50%);
-  }
-  
-  .reservation-form-top-header {
-    max-width: 800px;
-    margin: 0 auto;
   }
 }

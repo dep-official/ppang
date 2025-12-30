@@ -5,6 +5,7 @@ import Nav from "@/components/Nav/Nav";
 import ConditionalFooter from "@/components/ConditionalFooter/ConditionalFooter";
 import Image from "next/image";
 import "./events.css";
+import { AlignHorizontalSpaceAround } from "lucide-react";
 
 export default function EventsPage() {
   const router = useRouter();
@@ -13,64 +14,44 @@ export default function EventsPage() {
   const events = [
     {
       id: 1,
-      image: "/service/001.png",
-      badge: "쁘띠",
-      date: "2025-11-18 ~ 2025-11-30",
-      title: "11월 연말 할인 이벤트",
+      image: "/events/event_01.png",
+      badge: "진행중",
+      date: "2026-01-01 ~ 2026-01-31",
+      title: "해피 뉴 팡, HAPPY NEW PPANG!",
       originalPrice: "90,000  50%",
       salePrice: "90만원",
       isEnded: false,
     },
     {
       id: 2,
-      image: "/service/002.png",
-      badge: "종료된 이벤트",
-      date: "2025-11-18 ~ 2025-11-30",
-      title: "11월 연말 할인 이벤트",
+      image: "/events/event_02.png",
+      badge: "진행중",
+      date: "2026-01-01 ~ 2026-01-31",
+      title: "팡클리닉 연말 결산 타임 세일",
       originalPrice: "90,000  50%",
       salePrice: "90만원",
-      isEnded: true,
+      isEnded: false,
     },
     {
       id: 3,
-      image: "/service/003.png",
-      badge: "종료된 이벤트",
-      date: "2025-11-18 ~ 2025-11-30",
-      title: "11월 연말 할인 이벤트",
+      image: "/events/event_03.png",
+      badge: "진행중",
+      date: "2026-01-01 ~ 2026-02-28",
+      title: "팡클리닉 연구소의 선물 겨울 상자가 도착했습니다. PPANG WINTER BOX EVENT",
       originalPrice: "90,000  50%",
       salePrice: "90만원",
-      isEnded: true,
+      isEnded: false,
     },
     {
       id: 4,
-      image: "/service/004.png",
-      badge: "쁘띠",
-      date: "2025-11-18 ~ 2025-11-30",
-      title: "11월 연말 할인 이벤트",
+      image: "/events/event_04.png",
+      badge: "진행중",
+      date: "2026-01-01 ~ 2026-12-31",
+      title: "VIP 멤버쉽 · PPANG CLINIC Vip Membership",
       originalPrice: "90,000  50%",
       salePrice: "90만원",
       isEnded: false,
-    },
-    {
-      id: 5,
-      image: "/service/005.png",
-      badge: "지방프로그램",
-      date: "2025-11-18 ~ 2025-11-30",
-      title: "11월 연말 할인 이벤트",
-      originalPrice: "90,000  50%",
-      salePrice: "90만원",
-      isEnded: false,
-    },
-    {
-      id: 6,
-      image: "/service/006.png",
-      badge: "종료된 이벤트",
-      date: "2025-11-18 ~ 2025-11-30",
-      title: "11월 연말 할인 이벤트",
-      originalPrice: "90,000  50%",
-      salePrice: "90만원",
-      isEnded: true,
-    },
+    }
   ];
 
   const filteredEvents = activeTab === "event" 
@@ -93,7 +74,7 @@ export default function EventsPage() {
             </button>
             <button
               className={`events-tab first ${activeTab === "first-visit" ? "active" : ""}`}
-              onClick={() => setActiveTab("first-visit")}
+              onClick={() => router.push(`/events/reservation`)}
 
             >
               첫방문체험가
@@ -105,7 +86,7 @@ export default function EventsPage() {
               <div 
                 key={event.id} 
                 className="events-page-card"
-                onClick={() => router.push(`/events/reservation`)}
+                onClick={() => router.push(`/events/${event.id}`)}
                 style={{ cursor: 'pointer' }}
               >
                 <div className="events-page-card-image">

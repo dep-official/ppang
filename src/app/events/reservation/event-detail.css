@@ -375,3 +375,22 @@
   }
 }
 
+/* Skeleton Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.event-detail-category-skeleton {
+  pointer-events: none;
+  user-select: none;
+}
+
+.product-skeleton {
+  pointer-events: none;
+  user-select: none;
+}

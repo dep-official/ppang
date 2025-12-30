@@ -544,6 +544,36 @@
   padding: 0;
 }
 
+/* 모바일용 컨테이너 - 모바일에서만 표시 */
+.mobile-swiper-container {
+  display: block;
+}
+
+.desktop-swiper-container {
+  display: none;
+}
+
+/* 모바일 Swiper 간격 */
+.mobile-swiper-container .events-swiper {
+  padding-bottom: 40px;
+  margin-bottom: 16px;
+}
+
+.mobile-swiper-container .events-swiper-bottom {
+  margin-bottom: 0;
+}
+
+/* 데스크톱용 컨테이너 - 데스크톱에서만 표시 */
+@media (min-width: 1024px) {
+  .mobile-swiper-container {
+    display: none;
+  }
+  
+  .desktop-swiper-container {
+    display: block;
+  }
+}
+
 .events-swiper {
   padding-bottom: 40px;
 }
@@ -608,7 +638,8 @@
 .short-container {
   position: relative;
   padding: 240px 200px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .short-container .container {
@@ -618,6 +649,10 @@
 
 .short-section {
   margin: 0 auto;
+}
+
+.short-section .swiper {
+  overflow: visible;
 }
 
 .short-title-section {
@@ -745,7 +780,9 @@
   }
 
   .short-container {
-    padding: 120px 0px;
+    padding: 120px 0px 140px;
+    overflow-x: hidden;
+    overflow-y: visible;
   }
 
   .short-section {

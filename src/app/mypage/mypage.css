@@ -1,0 +1,515 @@
+/* 마이페이지 */
+.mypage-container {
+  min-height: 100vh;
+  background: #FFFFFF;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.mypage-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* 로딩 */
+.mypage-loading {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #F0F0F0;
+  border-top-color: #1361E1;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 헤더 */
+.mypage-header {
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.mypage-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0 0 16px 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-greeting {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5em;
+  color: #333333;
+  margin: 0;
+}
+
+.user-greeting strong {
+  font-weight: 700;
+  color: #000000;
+}
+
+.user-email {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5em;
+  color: #777777;
+  margin: 0;
+}
+
+/* 섹션 */
+.reservations-section {
+  margin-bottom: 48px;
+}
+
+.section-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.4em;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0 0 24px 0;
+}
+
+/* 에러 메시지 */
+.error-message {
+  text-align: center;
+  padding: 48px 24px;
+  background: #FFF5F5;
+  border-radius: 12px;
+}
+
+.error-message p {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #E53E3E;
+  margin: 0 0 16px 0;
+}
+
+.error-message button {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 24px;
+  background: #E53E3E;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.error-message button:hover {
+  background: #C53030;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  gap: 16px;
+}
+
+.empty-state p {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #777777;
+  margin: 0;
+}
+
+.btn-primary {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 32px;
+  background: #1361E1;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #0F4FC1;
+}
+
+/* 예약 카드 */
+.reservations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reservation-card {
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.reservation-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.reservation-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #F8F8F8;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.reservation-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.reservation-date svg {
+  color: #1361E1;
+}
+
+/* 상태 뱃지 */
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+.status-pending {
+  background: #FFF3E0;
+  color: #F57C00;
+}
+
+.status-confirmed {
+  background: #E3F2FD;
+  color: #1976D2;
+}
+
+.status-cancelled {
+  background: #FFEBEE;
+  color: #D32F2F;
+}
+
+.status-completed {
+  background: #E8F5E9;
+  color: #388E3C;
+}
+
+/* 카드 본문 */
+.reservation-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reservation-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.reservation-info-row.total {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #F0F0F0;
+}
+
+.reservation-info-row .label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #777777;
+}
+
+.reservation-info-row .value {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333333;
+}
+
+.reservation-info-row .value.price {
+  font-size: 18px;
+  color: #1361E1;
+}
+
+/* 예약 시술 드롭다운 */
+.reservation-info-row.products-dropdown {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+}
+
+.products-dropdown-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.products-dropdown-trigger:hover {
+  opacity: 0.7;
+}
+
+.products-dropdown-trigger .label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #777777;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.products-count {
+  font-size: 13px;
+  color: #1361E1;
+  font-weight: 600;
+}
+
+.dropdown-icon {
+  color: #777777;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.dropdown-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 0 12px 0;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 카트 모달 스타일 적용 - 좌우 배치 */
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Pretendard', sans-serif;
+  padding: 12px;
+  background: #FAFAFA;
+  border-radius: 8px;
+  gap: 16px;
+}
+
+.product-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-category {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.4em;
+  color: #999999;
+  text-transform: uppercase;
+}
+
+.product-name {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5em;
+  color: #000000;
+}
+
+.product-quantity {
+  font-weight: 600;
+  font-size: 13px;
+  color: #777777;
+  margin-left: 4px;
+}
+
+.product-price {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.4em;
+  color: #000000;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.product-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px;
+}
+
+.loading-spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #F0F0F0;
+  border-top-color: #1361E1;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.product-loading span {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  color: #999999;
+}
+
+.product-error {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #E53E3E;
+  text-align: center;
+  padding: 12px;
+}
+
+.no-products {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #999999;
+  text-align: center;
+  padding: 16px;
+  font-style: italic;
+}
+
+/* 카드 푸터 */
+.reservation-card-footer {
+  padding: 16px 20px;
+  background: #F8F8F8;
+  border-top: 1px solid #E0E0E0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-cancel {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 24px;
+  background: #FFFFFF;
+  color: #D32F2F;
+  border: 1px solid #D32F2F;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background: #D32F2F;
+  color: #FFFFFF;
+}
+
+/* 반응형 */
+@media (min-width: 768px) {
+  .mypage-content {
+    padding: 0 24px;
+  }
+
+  .mypage-title {
+    font-size: 40px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .mypage-title {
+    font-size: 24px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .reservation-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .reservation-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .reservation-card-footer {
+    justify-content: stretch;
+  }
+
+  .btn-cancel {
+    width: 100%;
+  }
+}
+

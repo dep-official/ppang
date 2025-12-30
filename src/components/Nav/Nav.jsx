@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import CustomEase from "gsap/CustomEase";
 import SplitText from "gsap/SplitText";
-import { useLenis } from "lenis/react";
+// Lenis 제거됨 - 네이티브 스크롤 사용
 
 import MenuBtn from "../MenuBtn/MenuBtn";
 import TopBar from "../TopBar/TopBar";
@@ -29,19 +29,21 @@ const Nav = () => {
   const isInitializedRef = useRef(false);
   const splitTextRefs = useRef([]);
   const router = useRouter();
-  const lenis = useLenis();
 
   const { navigateWithTransition } = useViewTransition();
 
+  // 메뉴 열릴 때 body 스크롤 차단
   useEffect(() => {
-    if (lenis) {
       if (isOpen) {
-        lenis.stop();
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
       } else {
-        lenis.start();
-      }
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
     }
-  }, [lenis, isOpen]);
+  }, [isOpen]);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(CustomEase);

@@ -22,7 +22,7 @@ export default function DoctorPage() {
                   <h2 className="doctor-english-name-last">Gyu Seung</h2>
                 </Copy>
                 <Copy delay={0.2}>
-                  <p className="doctor-korean-title">팡클리닉 총괄원장</p>
+                  <p className="doctor-korean-title">이규승 총괄원장</p>
                 </Copy>
              
                 <Copy delay={0.25}>
@@ -47,7 +47,7 @@ export default function DoctorPage() {
             <div className="doctor-right">
                <Copy delay={0.35}>
                   <h3 className="doctor-korean-name">
-                    <span>총괄원장</span> 이규승
+                    이규승 <span>총괄원장</span> 
                     </h3>
                 </Copy>
 
@@ -90,7 +90,7 @@ export default function DoctorPage() {
                   <h2 className="doctor-english-name-last">Ah Reum</h2>
                 </Copy>
                 <Copy delay={0.2}>
-                  <p className="doctor-korean-title">팡클리닉 대표원장</p>
+                  <p className="doctor-korean-title">김아름 대표원장</p>
                 </Copy>
              
                 <Copy delay={0.25}>
@@ -115,7 +115,7 @@ export default function DoctorPage() {
             <div className="doctor-right">
                <Copy delay={0.35}>
                   <h3 className="doctor-korean-name">
-                    <span>대표원장</span> 김아름
+                     김아름 <span>대표원장</span> 
                     </h3>
                 </Copy>
 

@@ -1,23 +1,27 @@
 import { Suspense } from "react";
 import Nav from "@/components/Nav/Nav";
-import EventDetailContent from "./EventDetailContent";
+import ConditionalFooter from "@/components/ConditionalFooter/ConditionalFooter";
+import EventBlogContent from "./EventBlogContent";
+import "./event-blog.css";
 
-// 이벤트 ID 목록 (실제 데이터 소스에서 가져와야 함)
-const eventIds = [1, 2, 3, 4, 5, 6];
-
+// Generate static paths for export
 export function generateStaticParams() {
-  return eventIds.map((id) => ({
-    id: id.toString(),
-  }));
+  return [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+    { id: '4' }
+  ];
 }
 
-export default function EventDetailPage({ params }) {
+export default function EventDetailPage() {
   return (
     <>
       <Nav />
       <Suspense fallback={<div>Loading...</div>}>
-        <EventDetailContent />
+        <EventBlogContent />
       </Suspense>
+      <ConditionalFooter />
     </>
   );
 }

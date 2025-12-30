@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import "./cart-modal.css";
 
-export default function CartModal({ isOpen, onClose, cartItems, totalPrice, onRemoveItem }) {
+export default function CartModal({ isOpen, onClose, cartItems, totalPrice, onRemoveItem, isLoading = false }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -42,11 +42,31 @@ export default function CartModal({ isOpen, onClose, cartItems, totalPrice, onRe
         </div>
 
         <div className="cart-modal-content">
+          {isLoading ? (
+            <div style={{ padding: '2rem', textAlign: 'center' }}>
+              <p>제품 정보를 불러오는 중...</p>
+            </div>
+          ) : (
           <div className="cart-modal-items">
-            {cartItems.map((item) => (
+              {cartItems.map((item) => {
+              // API 데이터 구조에 맞게 필드 추출
+              const productName = item.name || item.title || item.productName || '제품명 없음';
+              const categoryName = item.category?.name || item.categoryName || '';
+              const productPrice = item.price || item.salePrice || '0원';
+              
+              // 가격 포맷팅
+              const formattedPrice = typeof productPrice === 'number' 
+                ? `${productPrice.toLocaleString()}원` 
+                : productPrice;
+              
+              return (
               <div key={item.id} className="cart-modal-item">
                 <div className="cart-modal-item-info">
-                  <p className="cart-modal-item-title">{item.title}</p>
+                    {categoryName && (
+                      <span className="cart-modal-item-category">{categoryName}</span>
+                    )}
+                    <p className="cart-modal-item-title">{productName}</p>
+                    <span className="cart-modal-item-price">{formattedPrice}</span>
                 </div>
                 <button 
                   className="cart-modal-item-remove"
@@ -58,8 +78,10 @@ export default function CartModal({ isOpen, onClose, cartItems, totalPrice, onRe
                   </svg>
                 </button>
               </div>
-            ))}
+              );
+              })}
           </div>
+          )}
 
           <div className="cart-modal-divider"></div>
 

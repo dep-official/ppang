@@ -117,28 +117,60 @@
   gap: 12px;
   margin-top: 24px;
   padding: 0 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  max-width: 480px; /* 5개 썸네일 (80px * 5) + gap (12px * 4) + padding (20px * 2) */
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: flex-start;
+}
+
+.interior-gallery-thumbnails::-webkit-scrollbar {
+  height: 4px;
+}
+
+.interior-gallery-thumbnails::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.interior-gallery-thumbnails::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
 }
 
 .interior-gallery-thumbnail {
   width: 80px;
   height: 80px;
-  border: 2px solid transparent;
+  min-width: 80px;
+  flex-shrink: 0;
+  border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  background: none;
+  background: rgba(0, 0, 0, 0.2);
   padding: 0;
-  transition: border-color 0.3s ease, opacity 0.3s ease;
-  opacity: 0.6;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+  transform: scale(0.95);
+  scroll-snap-align: center;
 }
 
 .interior-gallery-thumbnail:hover {
-  opacity: 1;
+  opacity: 0.8;
+  transform: scale(0.98);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .interior-gallery-thumbnail.active {
-  border-color: white;
+  border-color: #1361E1;
   opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 0 0 2px rgba(19, 97, 225, 0.3), 0 4px 12px rgba(19, 97, 225, 0.4);
 }
 
 .thumbnail-image {
@@ -187,11 +219,16 @@
   .interior-gallery-thumbnails {
     gap: 8px;
     margin-top: 16px;
+    padding: 0 16px;
+    max-width: 100%; /* 모바일에서는 화면 너비에 맞춤 */
+    width: 100%;
   }
 
   .interior-gallery-thumbnail {
     width: 60px;
     height: 60px;
+    min-width: 60px;
+    flex-shrink: 0;
   }
 
   .interior-gallery-close {

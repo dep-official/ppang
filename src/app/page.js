@@ -7,7 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomEase from "gsap/CustomEase";
 import { useGSAP } from "@gsap/react";
-import { useLenis } from "lenis/react";
+// Lenis 제거됨 - 네이티브 스크롤 사용
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -28,7 +28,8 @@ import EventCard from "@/components/EventCard/EventCard";
 import FloatingBar from "@/components/FloatingBar/FloatingBar";
 import InteriorGallery from "@/components/InteriorGallery/InteriorGallery";
 import Image from "next/image";
-import ShortCard from "@/components/ShortCard/ShortCard"
+import ShortCard from "@/components/ShortCard/ShortCard";
+import { useViewTransition } from "@/hooks/useViewTransition";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 CustomEase.create("hop", "0.9, 0, 0.1, 1");
@@ -43,6 +44,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "주름보톡스",
     originalPrice: "18,000  50%",
+    category: "보톡스",
     salePrice: "0.9"
   },
   {
@@ -52,6 +54,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "지방분해주사",
     originalPrice: "18,000  50%",
+    category: "비만/바디케어",
     salePrice: "0.9"
   },
   {
@@ -61,6 +64,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "보톡스",
     originalPrice: "30,000  50%",
+    category: "보톡스",
     salePrice: "1.5"
   },
   {
@@ -70,6 +74,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "물광주사",
     originalPrice: "58,000  50%",
+    category: "스킨부스터",
     salePrice: "2.9"
   },
   {
@@ -79,15 +84,17 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "슈링크",
     originalPrice: "60,000  50%",
+    category: "레이저",
     salePrice: "3"
   },
   {
     id: 6,
     image: "/service/006.png",
-    badge: "지방프로그램",
+    badge: "쁘띠",
     date: "~ 2026. 01. 31",
     title: "인모드",
     originalPrice: "78,000  50%",
+    category: "레이저",
     salePrice: "3.9"
   },
   {
@@ -97,6 +104,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "스킨부스터",
     originalPrice: "78,000  50%",
+    category: "스킨부스터",
     salePrice: "3.9"
   },
   {
@@ -106,6 +114,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "쥬베룩 아이",
     originalPrice: "78,000  50%",
+    category: "스킨부스터",
     salePrice: "3.9"
   },
   {
@@ -115,6 +124,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "실리프팅",
     originalPrice: "98,000  50%",
+    category: "스킨부스터",
     salePrice: "4.9"
   },
   {
@@ -124,6 +134,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "온다 (얼굴 10kj)",
     originalPrice: "98,000  50%",
+    category: "레이저",
     salePrice: "4.9"
   },
   {
@@ -133,6 +144,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "PR-3 수액",
     originalPrice: "98,000  50%",
+    category: "비만/바디케어",
     salePrice: "4.9"
   },
   {
@@ -142,6 +154,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "바디 체크 패키지",
     originalPrice: "98,000  50%",
+    category: "비만/바디케어",
     salePrice: "4.9"
   },
   {
@@ -151,6 +164,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "쥬베룩 스킨",
     originalPrice: "98,000  50%",
+    category: "스킨부스터",
     salePrice: "4.9"
   },
   {
@@ -160,6 +174,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "지방분해주사",
     originalPrice: "118,000  50%",
+    category: "비만/바디케어",
     salePrice: "5.9"
   },
   {
@@ -169,6 +184,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "스킨보톡스",
     originalPrice: "138,000  50%",
+    category: "보톡스",
     salePrice: "6.9"
   },
   {
@@ -178,6 +194,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "온다 (바디 10kj)",
     originalPrice: "158,000  50%",
+    category: "레이저",
     salePrice: "7.9"
   },
   {
@@ -187,15 +204,17 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "입술 무제한 패키지",
     originalPrice: "158,000  50%",
+    category: "보톡스",
     salePrice: "7.9"
   },
   {
     id: 18,
     image: "/service/018.png",
-    badge: "지방프로그램",
+    badge: "쁘띠",
     date: "~ 2026. 01. 31",
     title: "쥬베룩 G",
     originalPrice: "178,000  50%",
+    category: "레이저",
     salePrice: "8.9"
   },
   {
@@ -205,15 +224,17 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "목주름 필러",
     originalPrice: "198,000  50%",
+    category: "필러/콜라겐",
     salePrice: "9.9"
   },
   {
     id: 20,
     image: "/service/020.png",
-    badge: "지방프로그램",
+    badge: "쁘띠",
     date: "~ 2026. 01. 31",
     title: "애교살 or 코 필러",
     originalPrice: "318,000  50%",
+    category: "필러/콜라겐",
     salePrice: "15.9"
   },
   {
@@ -223,6 +244,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "무통 리쥬란 HB",
     originalPrice: "318,000  50%",
+    category: "스킨/부스터",
     salePrice: "15.9"
   },
   {
@@ -232,6 +254,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "팔자주름 필러",
     originalPrice: "398,000  50%",
+    category: "필러/콜라겐",
     salePrice: "19.9"
   },
   {
@@ -241,42 +264,47 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "무제한 목주름 필 패키지",
     originalPrice: "498,000  50%",
+    category: "필러/콜라겐",
     salePrice: "24.9"
   },
   {
     id: 24,
     image: "/service/024.png",
-    badge: "쁘띠",
+    badge: "지방프로그램",
     date: "~ 2026. 01. 31",
     title: "전신 라인 관리 패키지",
     originalPrice: "598,000  50%",
+    category: "비만/바디케어",
     salePrice: "29.9"
   },
   {
     id: 25,
     image: "/service/025.png",
-    badge: "쁘띠",
+    badge: "지방프로그램",
     date: "~ 2026. 01. 31",
     title: "팡V라인 풀패키지",
     originalPrice: "598,000  50%",
+    category: "",
     salePrice: "29.9"
   },
   {
     id: 26,
     image: "/service/026.png",
-    badge: "지방프로그램",
+    badge: "쁘띠",
     date: "~ 2026. 01. 31",
     title: "디자인 볼링크",
     originalPrice: "778,000  50%",
+    category: "",
     salePrice: "38.9"
   },
   {
     id: 27,
     image: "/service/027.png",
-    badge: "쁘띠",
+    badge: "지방프로그램",
     date: "~ 2026. 01. 31",
     title: "복부 365도 다이어트 패키지",
     originalPrice: "798,000  50%",
+    category: "",
     salePrice: "39.9"
   },
   {
@@ -286,6 +314,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "집중 아이 리프팅 패키지",
     originalPrice: "798,000  50%",
+    category: "",
     salePrice: "39.9"
   },
   {
@@ -295,6 +324,7 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "프리미엄 윤곽 리프팅 패키지",
     originalPrice: "2,198,000  50%",
+    category: "",
     salePrice: "109.9"
   },
   {
@@ -304,47 +334,47 @@ const eventCards = [
     date: "~ 2026. 01. 31",
     title: "프리미엄 바디 BOX",
     originalPrice: "1,998,000  50%",
+    category: "",
     salePrice: "99.9"
   }
 ];
 
+// 모바일용: 홀수/짝수 인덱스로 분할 (위쪽 행/아래쪽 행)
+const topRowCards = eventCards.filter((_, index) => index % 2 === 0);
+const bottomRowCards = eventCards.filter((_, index) => index % 2 === 1);
+
 const shortCards = [
   {
     id: 1,
-    image: "/shorts/001.jpg",
-    title: "윤곽 + 눈 + 코",
+    image: "/shorts/001.webp",
+    title: "온다 리프팅(바디) + 쥬베룩G(힙업)",
     originalPrice: "PPANG SHORTS",
-    url: "https://www.instagram.com/reel/DSjr0SRiKOE/?igsh=NWM5ZndjNzluY3Rl",
-    language: "KR"
+    url: "https://www.instagram.com/reel/DSXFGT5iTng/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D",
+    language: "JP"
   },
   {
     id: 2,
-    image: "/shorts/002.jpg",
-    title: "윤곽2종 + 코재수술",
+    image: "/shorts/002.webp",
+    title: "PP지방분해주사(페이스) + 온다리프팅(페이스)",
     originalPrice: "PPANG SHORTS",
-    url: "https://www.instagram.com/reel/DSXFGT5iTng/?igsh=MXhldjlvcHlzNHhyMA==",
+    url: "https://www.instagram.com/reel/DSjr0SRiKOE/?igsh=NWM5ZndjNzluY3Rl",
     language: "CN"
   },
   {
     id: 3,
-    image: "/shorts/001.jpg",
-    title: "안보이는 뒷라인까지\n허벅지 돌려깎기",
+    image: "/shorts/003.webp",
+    title: "PP지방분해주사(페이스) + 입술필러",
     originalPrice: "PPANG SHORTS",
+    url: "https://www.instagram.com/reel/DSeOt3hEnzE/?igsh=MWZla2w3cmtqdzlndA==",
     language: "JP"
   },
   {
     id: 4,
-    image: "/shorts/002.jpg",
-    title: "승모근 집중관리\n패키지",
+    image: "/shorts/004.webp",
+    title: "쥬베룩볼륨 + 리쥬란+ 팡스킨부스터 + PP지방분해주사(페이스) + 무통주사",
     originalPrice: "PPANG SHORTS",
-    language: "EN"
-  },
-  {
-    id: 5,
-    image: "/shorts/001.jpg",
-    title: "보톡스 50% 할인\n팡클리닉 오픈 감사제",
-    originalPrice: "PPANG SHORTS",
-    language: "KR"
+    url: "https://www.instagram.com/reel/DSxGacokuNL/",
+    language: "JP"
   }
 ];
 
@@ -353,8 +383,8 @@ export default function Home() {
   const [showPreloader, setShowPreloader] = useState(false);
   const [loaderAnimating, setLoaderAnimating] = useState(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-  const lenis = useLenis();
   const router = useRouter();
+  const { navigateWithTransition } = useViewTransition();
 
   useEffect(() => {
     // 클라이언트에서만 localStorage 체크
@@ -364,15 +394,18 @@ export default function Home() {
     }
   }, []);
 
+  // 프리로더 중 스크롤 차단
   useEffect(() => {
-    if (lenis) {
-      if (loaderAnimating) {
-        lenis.stop();
-      } else {
-        lenis.start();
-      }
+    if (loaderAnimating) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
     }
-  }, [lenis, loaderAnimating]);
+  }, [loaderAnimating]);
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -494,6 +527,11 @@ export default function Home() {
     { scope: tagsRef }
   );
 
+  const handleEventCardClick = (category) => {
+    const query = category ? `?category=${encodeURIComponent(category)}` : "";
+    navigateWithTransition(`/events/reservation${query}`);
+  };
+
   return (
     <>
       {showPreloader && (
@@ -591,46 +629,127 @@ export default function Home() {
               </div>
             </div>
             <div className="events-cards-swiper-wrapper">
-              <Swiper
-                modules={[Navigation, Pagination, Autoplay, Grid]}
-                spaceBetween={16}
-                slidesPerView={2}
-                grid={{
-                  rows: 2,
-                  fill: 'row',
-                }}
-                slidesPerGroup={1}
-                breakpoints={{
-                  1024: {
-                    slidesPerView: 4,
-                    grid: {
-                      rows: 1,
-                      fill: 'row',
+              {/* 모바일: 두 개의 독립적인 Swiper */}
+              <div className="mobile-swiper-container">
+                {/* 위쪽 행 Swiper */}
+                <Swiper
+                  modules={[Pagination, Autoplay]}
+                  spaceBetween={16}
+                  slidesPerView={2}
+                  slidesPerGroup={1}
+                  pagination={{ 
+                    clickable: true,
+                    dynamicBullets: true
+                  }}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
+                  loop={false}
+                  className="events-swiper events-swiper-top"
+                  breakpoints={{
+                    1024: {
+                      slidesPerView: 4,
                     },
-                    slidesPerGroup: 1,
-                  },
-                }}
-                pagination={{ clickable: true }}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
-                loop={false}
-                className="events-swiper"
-              >
-                {eventCards.map((card) => (
-                  <SwiperSlide key={card.id}>
-                    <EventCard
-                      image={card.image}
-                      badge={card.badge}
-                      date={card.date}
-                      title={card.title}
-                      originalPrice={card.originalPrice}
-                      salePrice={card.salePrice}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                  }}
+                >
+                  {topRowCards.map((card) => (
+                    <SwiperSlide key={`top-${card.id}`}>
+                      <EventCard
+                        image={card.image}
+                        badge={card.badge}
+                        date={card.date}
+                        title={card.title}
+                        originalPrice={card.originalPrice}
+                        salePrice={card.salePrice}
+                        onClick={() => handleEventCardClick(card.category)}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+
+                {/* 아래쪽 행 Swiper */}
+                <Swiper
+                  modules={[Pagination, Autoplay]}
+                  spaceBetween={16}
+                  slidesPerView={2}
+                  slidesPerGroup={1}
+                  pagination={{ 
+                    clickable: true,
+                    dynamicBullets: true
+                  }}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
+                  loop={false}
+                  className="events-swiper events-swiper-bottom"
+                  breakpoints={{
+                    1024: {
+                      slidesPerView: 4,
+                    },
+                  }}
+                >
+                  {bottomRowCards.map((card) => (
+                    <SwiperSlide key={`bottom-${card.id}`}>
+                      <EventCard
+                        image={card.image}
+                        badge={card.badge}
+                        date={card.date}
+                        title={card.title}
+                        originalPrice={card.originalPrice}
+                        salePrice={card.salePrice}
+                        onClick={() => handleEventCardClick(card.category)}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+
+              {/* 데스크톱: 기존 단일 Swiper */}
+              <div className="desktop-swiper-container">
+                <Swiper
+                  modules={[Navigation, Pagination, Autoplay, Grid]}
+                  spaceBetween={16}
+                  slidesPerView={2}
+                  grid={{
+                    rows: 2,
+                    fill: 'row',
+                  }}
+                  slidesPerGroup={1}
+                  breakpoints={{
+                    1024: {
+                      slidesPerView: 4,
+                      grid: {
+                        rows: 1,
+                        fill: 'row',
+                      },
+                      slidesPerGroup: 1,
+                    },
+                  }}
+                  pagination={{ clickable: true }}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
+                  loop={false}
+                  className="events-swiper events-swiper-desktop"
+                >
+                  {eventCards.map((card) => (
+                    <SwiperSlide key={card.id}>
+                      <EventCard
+                        image={card.image}
+                        badge={card.badge}
+                        date={card.date}
+                        title={card.title}
+                        originalPrice={card.originalPrice}
+                        salePrice={card.salePrice}
+                        onClick={() => handleEventCardClick(card.category)}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
             </div>
           </div>
         </div>
@@ -719,7 +838,9 @@ export default function Home() {
       </section>
 
       <section className="about-container">
-        <a className="container" href="/doctor"> 
+        <div 
+          className="container" 
+        > 
           <div>
             <h3 className="about-main-title">PPANG CLINIC GlOBAL<br/> K-Beauty의 기준이 되다</h3>
             <p className="about-main-subtitle">
@@ -731,11 +852,15 @@ export default function Home() {
               <AnimatedButton 
                 label="자세히보기" 
                 route={null}
-                onClick={() => router.push('/doctor')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  navigateWithTransition('/doctor');
+                }}
               />
           </div>
           <Image src="/clients/docter.png" className="about-docter" alt="의료진소개" width={1000} height={1000} />
-        </a>
+        </div>
       </section>
 
       <section className="gallery-callout">

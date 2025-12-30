@@ -22,7 +22,7 @@ export default function FloatingBar() {
   return (
     <div className={`floating-bar ${isVisible ? "visible" : ""}`}>
        <a 
-        href="/events/reservation/form"
+        href="/events/reservation"
         rel="noopener noreferrer"
         className="floating-bar-button"
         aria-label="예약"
