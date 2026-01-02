@@ -9,7 +9,7 @@ import CustomEase from "gsap/CustomEase";
 import { useGSAP } from "@gsap/react";
 // Lenis 제거됨 - 네이티브 스크롤 사용
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, Grid } from "swiper/modules";
@@ -378,7 +378,9 @@ const shortCards = [
   }
 ];
 
-export default function Home() {
+import { Suspense } from "react";
+
+function HomeContent() {
   const tagsRef = useRef(null);
   const [showPreloader, setShowPreloader] = useState(false);
   const [loaderAnimating, setLoaderAnimating] = useState(false);
@@ -386,13 +388,16 @@ export default function Home() {
   const router = useRouter();
   const { navigateWithTransition } = useViewTransition();
 
+  const searchParams = useSearchParams();
+
   useEffect(() => {
-    // 클라이언트에서만 localStorage 체크
-    const hasSeenPreloader = localStorage.getItem(PRELOADER_KEY);
-    if (!hasSeenPreloader) {
+    // skip=true 파라미터가 있으면 프리로더 스킵, 아니면 항상 표시
+    const shouldSkip = searchParams.get('skip') === 'true';
+    
+    if (!shouldSkip) {
       setShowPreloader(true);
     }
-  }, []);
+  }, [searchParams]);
 
   // 프리로더 중 스크롤 차단
   useEffect(() => {
@@ -494,9 +499,6 @@ export default function Home() {
           onComplete: () => {
             gsap.set(".loader", { pointerEvents: "none" });
             setLoaderAnimating(false);
-            if (typeof window !== 'undefined') {
-              localStorage.setItem(PRELOADER_KEY, 'true');
-            }
           },
         },
         "<"
@@ -596,18 +598,18 @@ export default function Home() {
               className="events-banner-swiper"
             >
               <SwiperSlide>
-                <Link href="/events" className="events-banner">
+                <Link href="/events/reservation" className="events-banner">
                   <Image src="/home/event_banner.webp" alt="events" width={1000} height={1000} />
                 </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <Link href="/events" className="events-banner">
-                  <Image src="/home/event_banner.webp" alt="events" width={1000} height={1000} />
+                <Link href="/events/2" className="events-banner">
+                  <Image src="/home/event_banner_001.png" alt="events" width={1000} height={1000} />
                 </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <Link href="/events" className="events-banner">
-                  <Image src="/home/event_banner.webp" alt="events" width={1000} height={1000} />
+                <Link href="/events/1" className="events-banner">
+                  <Image src="/home/event_banner_002.png" alt="events" width={1000} height={1000} />
                 </Link>
               </SwiperSlide>
             </Swiper>
@@ -798,7 +800,7 @@ export default function Home() {
                   fill: 'row',
                 }}
                 slidesPerGroup={2}
-                navigation={true}
+                navigation
                 breakpoints={{
                   1024: {
                     slidesPerView: 4,
@@ -810,22 +812,17 @@ export default function Home() {
                   },
                 }}
                 pagination={{ clickable: true }}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
+                autoplay={false}
                 loop={false}
                 className="short-swiper"
               >
                 {shortCards.map((card) => (
                   <SwiperSlide key={card.id}>
                     <ShortCard
+                      id={card.id}
                       image={card.image}
-                      badge={card.badge}
-                      date={card.date}
                       title={card.title}
                       originalPrice={card.originalPrice}
-                      salePrice={card.salePrice}
                       url={card.url}
                       language={card.language}
                     />
@@ -862,16 +859,16 @@ export default function Home() {
           <Image src="/clients/docter.png" className="about-docter" alt="의료진소개" width={1000} height={1000} />
         </div>
       </section>
-
+      
       <section className="gallery-callout">
         <div className="container">
           <div className="gallery-callout-col">
             <div className="gallery-callout-row">
               <div className="gallery-callout-img gallery-callout-img-1">
-                <img src="/gallery-callout/001.webp" alt="" />
+                <img src="/gallery-callout/002.webp" alt="" />
               </div>
               <div className="gallery-callout-img gallery-callout-img-2">
-                <img src="/gallery-callout/002.webp" alt="" />
+                <img src="/gallery-callout/001.webp" alt="" />
               </div>
             </div>
             <div className="gallery-callout-row">
@@ -919,5 +916,13 @@ export default function Home() {
         onClose={() => setIsGalleryOpen(false)} 
       />
     </>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="loader"><div className="spinner-container"><div className="spinner"></div></div></div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
