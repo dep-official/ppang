@@ -55,7 +55,7 @@ export default function RealStoryPage() {
       <div className="real-story-page">
         <div className="real-story-container">
           <div className="real-story-title-section">
-            <h1 className="real-story-main-title">PPANG REAR REAL STORY</h1>
+            <h1 className="real-story-main-title">PPANG REAL STORY</h1>
             <p className="real-story-subtitle">쁘띠와 체형의 완벽한 밸런스, 오직 한 사람만을 위해</p>
             <p className="real-story-subtitle">설계된 디자인 Customizing Your Beauty.</p>
           </div>
