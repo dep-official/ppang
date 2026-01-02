@@ -99,7 +99,7 @@ const TopBar = ({ onMenuClick, isMenuOpen, onLogoClick }) => {
           href="/"
           onClick={onLogoClick || ((e) => {
             e.preventDefault();
-            navigateWithTransition("/");
+            navigateWithTransition("/?skip=true");
           })}
         >
           <img src="/logos/logo_symbol.svg" alt="팡클리닉" />

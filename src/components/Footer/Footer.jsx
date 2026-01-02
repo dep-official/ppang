@@ -71,15 +71,6 @@ const Footer = () => {
             <div className="footer-nav-links">
               <Copy delay={0.1}>
                 <a
-                  href="/"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateWithTransition("/");
-                  }}
-                >
-                  <h3>병원소개</h3>
-                </a>
-                <a
                   href=""
                   onClick={(e) => {
                     e.preventDefault();

@@ -8,7 +8,7 @@ import {
   useRef,
   useLayoutEffect,
 } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import gsap from "gsap";
 import CustomEase from "gsap/CustomEase";
@@ -31,6 +31,14 @@ const Nav = () => {
   const router = useRouter();
 
   const { navigateWithTransition } = useViewTransition();
+  const pathname = usePathname();
+
+  // 경로 변경 시 메뉴 닫기
+  useEffect(() => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  }, [pathname]);
 
   // 메뉴 열릴 때 body 스크롤 차단
   useEffect(() => {
@@ -39,10 +47,17 @@ const Nav = () => {
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
       } else {
-      document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.width = '';
     }
+
+    // 컴포넌트 언마운트 시 정리
+    return () => {
+      document.body.classList.remove("menu-open");
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
   }, [isOpen]);
 
   useLayoutEffect(() => {
@@ -397,11 +412,12 @@ const Nav = () => {
       href: "/",
       mobileSection: "프로그램",
       submenu: [
-        { title: "PP-1", href: "/" },
-        { title: "PP-3", href: "/" },
+        { title: "PP-1", href: "/pp-1" },
+        { title: "PP-3", href: "/pp-3" },
         { title: "PP-5", href: "/" },
-        { title: "PP-7", href: "/" },
-        { title: "PP-8·PP-9", href: "/" }
+        { title: "PP-7", href: "/pp-7" },
+        { title: "PP-8", href: "/pp-8" },
+        { title: "PP-9", href: "/" }
       ],
     },
     {
@@ -484,7 +500,7 @@ const Nav = () => {
         }
         if (!isNavigating) {
           setIsNavigating(true);
-          navigateWithTransition("/");
+          navigateWithTransition("/?skip=true");
         }
       }
     },
