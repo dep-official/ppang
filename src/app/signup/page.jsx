@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { authAPI } from '@/api/services/auth';
+import PrivacyModal from '@/components/PrivacyModal/PrivacyModal';
 import '../login/login.css';
 
 export default function SignupPage() {
@@ -16,6 +17,8 @@ export default function SignupPage() {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [privacyAgreed, setPrivacyAgreed] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,6 +63,12 @@ export default function SignupPage() {
         setError('올바른 전화번호 형식을 입력해주세요. (예: 010-1234-5678)');
         return false;
       }
+    }
+
+    // 개인정보 동의 검증
+    if (!privacyAgreed) {
+      setError('개인정보 수집 및 이용에 동의해주세요.');
+      return false;
     }
 
     return true;
@@ -187,6 +196,28 @@ export default function SignupPage() {
               />
             </div>
 
+            {/* 개인정보 동의 */}
+            <div className="form-group-agreement">
+              <div className="agreement-row">
+                <label className="agreement-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={privacyAgreed}
+                    onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                    disabled={loading}
+                  />
+                  <span className="agreement-checkbox-label">개인정보 수집 및 이용 동의 *</span>
+                </label>
+                <button
+                  type="button"
+                  className="agreement-detail-link"
+                  onClick={() => setIsPrivacyModalOpen(true)}
+                >
+                  자세히 보기
+                </button>
+              </div>
+            </div>
+
             <button
               type="submit"
               className="auth-submit-btn"
@@ -238,6 +269,12 @@ export default function SignupPage() {
         </video>
         <div className="auth-background-overlay"></div>
       </div>
+
+      {/* 개인정보 이용 동의 모달 */}
+      <PrivacyModal
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
+      />
     </div>
   );
 }

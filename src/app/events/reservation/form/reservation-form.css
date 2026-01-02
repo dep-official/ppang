@@ -519,6 +519,16 @@
   color: #000000;
 }
 
+.reservation-form-checkbox-label.clickable {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.reservation-form-checkbox-label.clickable:hover {
+  color: #1361E1;
+}
+
 .reservation-form-detail-link {
   font-family: 'Pretendard', sans-serif;
   font-weight: 400;

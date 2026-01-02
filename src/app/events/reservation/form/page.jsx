@@ -8,6 +8,7 @@ import { useCartProducts, useCartTotalPrice } from "@/hooks/useCartProducts";
 import { useAuth } from "@/hooks/useAuth";
 import { reservationAPI } from "@/api/services/reservation";
 import { isWeekendOrHoliday as checkWeekendOrHoliday } from "@/utils/koreanHolidays";
+import PrivacyModal from "@/components/PrivacyModal/PrivacyModal";
 import "./reservation-form.css";
 
 export default function ReservationFormPage() {
@@ -21,6 +22,7 @@ export default function ReservationFormPage() {
   const [snsAgreed, setSnsAgreed] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   
   // 로그인 사용자 정보
   const { user, isAuthenticated } = useAuth();
@@ -362,9 +364,15 @@ export default function ReservationFormPage() {
                   checked={privacyAgreed}
                   onChange={(e) => setPrivacyAgreed(e.target.checked)}
                 />
-                <span className="reservation-form-checkbox-label">개인정보 이용 동의</span>
+                <span className="reservation-form-checkbox-label">
+                  개인정보 이용 동의
+                </span>
               </label>
-              <button type="button" className="reservation-form-detail-link">
+              <button
+                type="button"
+                className="reservation-form-detail-link"
+                onClick={() => setIsPrivacyModalOpen(true)}
+              >
                 자세히 보기
               </button>
             </div>
@@ -385,6 +393,12 @@ export default function ReservationFormPage() {
         </form>
 
       </div>
+
+      {/* 개인정보 이용 동의 모달 */}
+      <PrivacyModal
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
+      />
 
       {/* 예약 신청하기 버튼 */}
       <div className="reservation-form-footer">

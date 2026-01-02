@@ -337,6 +337,61 @@
   text-decoration: underline;
 }
 
+/* 개인정보 동의 영역 - reservation/form과 동일 */
+.form-group-agreement {
+  padding: 16px 0;
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+}
+
+.agreement-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.agreement-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.agreement-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  accent-color: #000;
+}
+
+.agreement-checkbox-label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #222;
+}
+
+.agreement-detail-link {
+  background: none;
+  border: none;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #888;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.agreement-detail-link:hover {
+  color: #000;
+}
+
 /* 하단 설명 텍스트 */
 .auth-description {
   margin-top: 3rem;
