@@ -484,30 +484,9 @@
   width: 20px;
   height: 20px;
   margin: 0;
+  padding: 0;
   cursor: pointer;
-  appearance: none;
-  border: 1px solid #D9D9D9;
-  border-radius: 4px;
-  background: #FFFFFF;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.reservation-form-checkbox input[type="checkbox"]:checked {
-  background: #FFFFFF;
-  border-color: #D9D9D9;
-}
-
-.reservation-form-checkbox input[type="checkbox"]:checked::after {
-  content: '';
-  position: absolute;
-  top: 1px;
-  left: 5px;
-  width: 5px;
-  height: 9px;
-  border: solid #000000;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  accent-color: #000;
 }
 
 .reservation-form-checkbox-label {
