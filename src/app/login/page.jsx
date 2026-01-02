@@ -159,7 +159,7 @@ function LoginContent() {
 
       {/* 오른쪽: 배경 영상/이미지 */}
       <div className="auth-background">
-        <video className="events-bg-video" autoPlay muted loop playsInline>
+        <video className="auth-bg-video" autoPlay muted loop playsInline>
           <source src="/home/bg_main_2.mp4" type="video/mp4" />
         </video>
         <div className="auth-background-overlay"></div>
