@@ -2,7 +2,7 @@ import { apiClient } from '../client';
 import { wrap } from './utils';
 import { authStorage } from '@/lib/auth';
 
-const AUTH = '/api/auth';
+const AUTH = '/auth';
 const byPath = (path) => `${AUTH}/${path}`;
 
 export const signup = wrap('회원가입 실패', (data) =>

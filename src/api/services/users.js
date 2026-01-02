@@ -1,7 +1,7 @@
 import { apiClient } from '../client';
 import { wrap } from './utils';
 
-const USERS = '/api/users';
+const USERS = '/users';
 const byId = (id) => `${USERS}/${id}`;
 
 export const getAllUsers = wrap('사용자 목록 조회 실패', (params) =>

@@ -1,7 +1,7 @@
 import { apiClient } from '../client';
 import { wrap } from './utils';
 
-const PRODUCTS = '/api/products';
+const PRODUCTS = '/products';
 const byId = (id) => `${PRODUCTS}/${id}`;
 
 export const createProduct = wrap('제품 생성 실패', (data) =>

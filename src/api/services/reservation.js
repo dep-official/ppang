@@ -1,10 +1,10 @@
 import { apiClient } from '../client';
 import { wrap } from './utils';
 
-const RESERVATIONS = '/api/reservations';
+const RESERVATIONS = '/reservations';
 const byId = (id) => `${RESERVATIONS}/${id}`;
 
-// 예약 생성 (회원/비회원)
+// 예약 생성 (회원/비회원)  
 export const createReservation = wrap('예약 생성 실패', async (data) => {
   return await apiClient.post(RESERVATIONS, data);
 });

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { authStorage } from '@/lib/auth';
 
 // API 기본 URL (환경 변수에서 가져오거나 기본값 사용)
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:10032';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 // Axios 인스턴스 생성
 export const apiClient = axios.create({

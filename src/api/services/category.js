@@ -1,7 +1,7 @@
 import { apiClient } from '../client';
 import { wrap } from './utils';
 
-const CATEGORIES = '/api/categories';
+const CATEGORIES = '/categories';
 const byId = (id) => `${CATEGORIES}/${id}`;
 
 export const createCategory = wrap('카테고리 생성 실패', (data) =>
