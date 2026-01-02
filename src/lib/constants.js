@@ -3,24 +3,24 @@
  */
 
 // 환경별 API 기본 URL
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:10032';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 // API 엔드포인트
 export const API_ENDPOINTS = {
   // 카테고리
-  CATEGORIES: '/api/categories',
-  CATEGORY_BY_ID: (id) => `/api/categories/${id}`,
+  CATEGORIES: '/categories',
+  CATEGORY_BY_ID: (id) => `/categories/${id}`,
   
   // 예약 (예시 - 필요시 추가)
-  RESERVATIONS: '/api/reservations',
-  RESERVATION_BY_ID: (id) => `/api/reservations/${id}`,
+  RESERVATIONS: '/reservations',
+  RESERVATION_BY_ID: (id) => `/reservations/${id}`,
   
   // 이벤트 (예시 - 필요시 추가)
-  EVENTS: '/api/events',
-  EVENT_BY_ID: (id) => `/api/events/${id}`,
+  EVENTS: '/events',
+  EVENT_BY_ID: (id) => `/events/${id}`,
   
   // 문의 (예시 - 필요시 추가)
-  CONTACT: '/api/contact',
+  CONTACT: '/contact',
 };
 
 // HTTP 상태 코드
